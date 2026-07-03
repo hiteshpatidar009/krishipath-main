@@ -1,6 +1,7 @@
 {
-  "buildCommand": "cd KrishiPath_com/frontend && npm install && npm run build",
+  "buildCommand": "npm --prefix KrishiPath_com/frontend run build",
   "outputDirectory": "KrishiPath_com/frontend/dist",
+  "installCommand": "npm --prefix KrishiPath_com/frontend install",
   "env": {
     "NODE_ENV": "production"
   },
