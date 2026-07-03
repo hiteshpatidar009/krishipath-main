@@ -1,0 +1,13 @@
+{
+  "buildCommand": "cd KrishiPath_com/frontend && npm install && npm run build",
+  "outputDirectory": "KrishiPath_com/frontend/dist",
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
