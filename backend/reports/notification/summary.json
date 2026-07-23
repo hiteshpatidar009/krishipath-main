@@ -1,0 +1,21 @@
+{
+  "moduleName": "notification",
+  "generatedAt": "2026-07-02T06:54:27.724Z",
+  "counts": {
+    "endpoints": 12,
+    "functions": 34,
+    "records": 57,
+    "pass": 57,
+    "fail": 0,
+    "warning": 0
+  },
+  "latency": {
+    "avg": 20.494773684210692,
+    "p50": 0.6479999999992287,
+    "p95": 128.3863999999994,
+    "p99": 202.40560000000005,
+    "max": 202.40560000000005,
+    "count": 57
+  },
+  "findings": []
+}

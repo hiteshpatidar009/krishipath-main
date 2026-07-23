@@ -1,0 +1,12 @@
+{
+  "moduleName": "activity-log",
+  "routeCoverage": 7,
+  "serviceCoverage": 23,
+  "middlewareCoverage": 2,
+  "validatorCoverage": 2,
+  "workflowCoverage": 0,
+  "eventCoverage": 1,
+  "transactionCoverage": 1,
+  "observabilityCoverage": 2,
+  "concurrencyCoverage": 1
+}

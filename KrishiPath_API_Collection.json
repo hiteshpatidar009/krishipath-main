@@ -1,0 +1,189 @@
+{
+  "info": {
+    "name": "KrishiPath Enterprise Market Intelligence API",
+    "description": "API Collection for the redesigned KrishiPath backend featuring Master Data Management (PIM), Concept Dictionary, and Trader Price Ingestion Pipeline.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Master Data Management (PIM)",
+      "description": "Manage the canonical product hierarchy: Categories, Subcategories, Products, and Variants.",
+      "item": [
+        {
+          "name": "Create Product Master",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/v1/mandi/admin/products",
+            "description": "Creates a new Global Product Master along with its specific Variants (Grades).",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"category\": \"Vegetables\",\n  \"subcategoryId\": \"uuid-here\",\n  \"name\": \"Onion\",\n  \"variants\": [\n    { \"gradeName\": \"Super\", \"unit\": \"QUINTAL\" },\n    { \"gradeName\": \"Golta\", \"unit\": \"QUINTAL\" }\n  ],\n  \"mandiIds\": [\"uuid-mandi-1\"]\n}"
+            }
+          }
+        },
+        {
+          "name": "List All Products",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/v1/mandi/admin/products",
+            "description": "Retrieves the full canonical catalog of products and variants."
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Language & Concept Dictionary",
+      "description": "Map language-specific aliases and trader slang to canonical Entity IDs.",
+      "item": [
+        {
+          "name": "Add Concept Mapping",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/v1/dictionary/mappings",
+            "description": "Maps a specific term (e.g., 'Vengayam') to a Canonical Entity ID (e.g., Product Onion UUID).",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"entityType\": \"PRODUCT\",\n  \"entityId\": \"uuid-product-onion\",\n  \"term\": \"Vengayam\",\n  \"languageCode\": \"ta\",\n  \"confidenceWeight\": 100\n}"
+            }
+          }
+        },
+        {
+          "name": "Resolve Term",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/v1/dictionary/resolve?term=Vengayam",
+            "description": "Resolves a raw text term into its canonical Entity ID."
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Trader Management",
+      "description": "Manage trader parsing profiles and feed sources.",
+      "item": [
+        {
+          "name": "Configure Parser Profile",
+          "request": {
+            "method": "PUT",
+            "url": "{{base_url}}/api/v1/traders/:traderId/parser-profile",
+            "description": "Sets custom parsing rules (separators, aliases) for a specific trader's WhatsApp messages."
+          }
+        },
+        {
+          "name": "Register Feed Source",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/v1/traders/:traderId/feed-sources",
+            "description": "Links a trader to a specific input source like WhatsApp or Portal.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sourceType\": \"WHATSAPP\",\n  \"sourceIdentifier\": \"+919876543210\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Data Ingestion Pipeline",
+      "description": "Submit raw market messages for processing through the ingestion engine.",
+      "item": [
+        {
+          "name": "Submit Raw Market Message",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/v1/ingestion/raw-messages",
+            "description": "Accepts raw text from WhatsApp. Triggers parsing, validation, and historical price storage.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"feedSourceId\": \"uuid-feed-source\",\n  \"rawText\": \"Onion Super 1500-2000 Avg 1800\\nGarlic Mota 5000\",\n  \"receivedAt\": \"2026-07-14T01:00:00Z\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Raw Message Status",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/v1/ingestion/raw-messages/:messageId/status",
+            "description": "Check if a raw message was successfully parsed, validated, or rejected."
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Price Aggregation & Reporting",
+      "description": "Query official prices and dynamically aggregated live market averages.",
+      "item": [
+        {
+          "name": "Set Official Mandi Price",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/v1/mandi/admin/:mandiId/official-prices",
+            "description": "Admins set the official governed price for a Product Variant.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"variantId\": \"uuid-variant\",\n  \"priceMin\": 1500,\n  \"priceMax\": 2000,\n  \"priceModal\": 1800\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Live Aggregated Prices",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/v1/mandi/:mandiId/live-prices",
+            "description": "Returns dynamically aggregated prices (Live Average, Median, High/Low) calculated directly from raw trader histories."
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. Localization & Translation Architecture",
+      "description": "Endpoints to manage canonical entity translations and the AI concept dictionary.",
+      "item": [
+        {
+          "name": "Get Missing Translations",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/v1/localization/translations/missing?lang=mr&entityType=PRODUCT",
+            "description": "Finds all entities that exist in English but are missing translations in the specified language."
+          }
+        },
+        {
+          "name": "Approve Draft Translation",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/v1/localization/translations/approve",
+            "description": "Approves an auto-generated or DRAFT translation.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"entityType\": \"PRODUCT\",\n  \"entityId\": \"uuid\",\n  \"fieldName\": \"name\",\n  \"languageCode\": \"hi\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Add Concept Dictionary Mapping",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/v1/localization/dictionary",
+            "description": "Maps a raw regional term to a canonical internal entity ID.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"entityType\": \"PRODUCT\",\n  \"entityId\": \"uuid\",\n  \"term\": \"Kanda\",\n  \"languageCode\": \"mr\",\n  \"confidenceWeight\": 1.0\n}"
+            }
+          }
+        },
+        {
+          "name": "Resolve Term (Test Endpoint)",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/v1/localization/dictionary/resolve",
+            "description": "Tests the AI resolver to see which Entity ID a specific term maps to.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"term\": \"Kanda\",\n  \"entityType\": \"PRODUCT\"\n}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

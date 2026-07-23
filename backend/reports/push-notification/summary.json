@@ -1,0 +1,21 @@
+{
+  "moduleName": "push-notification",
+  "generatedAt": "2026-07-02T06:54:26.433Z",
+  "counts": {
+    "endpoints": 5,
+    "functions": 17,
+    "records": 33,
+    "pass": 33,
+    "fail": 0,
+    "warning": 0
+  },
+  "latency": {
+    "avg": 34.521654545454524,
+    "p50": 3.861699999999473,
+    "p95": 277.1175999999996,
+    "p99": 354.8259999999991,
+    "max": 354.8259999999991,
+    "count": 33
+  },
+  "findings": []
+}

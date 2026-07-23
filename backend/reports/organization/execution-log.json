@@ -1,0 +1,1974 @@
+[
+  {
+    "moduleName": "organization",
+    "testCategory": "architecture",
+    "testScenario": "module boundary files",
+    "expectedResult": "module.ts and index.ts exist",
+    "actualResult": "boundaries-present",
+    "responseTimeMs": 1.8690000000005966,
+    "retryCount": 0,
+    "executionDurationMs": 1.8690000000005966,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 1.8690000000005966
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "architecture",
+    "testScenario": "placeholder export scan",
+    "expectedResult": "no export {}; placeholders",
+    "actualResult": "no-placeholders",
+    "responseTimeMs": 49.38969999999972,
+    "retryCount": 0,
+    "executionDurationMs": 49.38969999999972,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 25.62935000000016
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "architecture",
+    "testScenario": "layer artifact scan",
+    "expectedResult": "routes/controllers/services/domain discoverable",
+    "actualResult": "layers-discovered",
+    "responseTimeMs": 25.554300000001604,
+    "retryCount": 0,
+    "executionDurationMs": 25.554300000001604,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 25.604333333333972
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "security",
+    "testScenario": "route guard source scan",
+    "expectedResult": "auth/authorization guards present",
+    "actualResult": "routes=9",
+    "responseTimeMs": 32.285399999998845,
+    "retryCount": 0,
+    "executionDurationMs": 32.285399999998845,
+    "passFailStatus": "pass",
+    "securityNotes": "source guard enforcement inspected",
+    "averageLatencyMs": 27.27460000000019
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/hierarchy",
+    "method": "GET",
+    "testCategory": "middleware",
+    "testScenario": "blocks unauthenticated access",
+    "payload": {},
+    "expectedResult": "401/403/400/404 or public status",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Unauthorized"
+    },
+    "responseTimeMs": 89.1221999999998,
+    "retryCount": 0,
+    "executionDurationMs": 89.1221999999998,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 39.644120000000115
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/",
+    "method": "POST",
+    "testCategory": "middleware",
+    "testScenario": "blocks unauthenticated access",
+    "payload": {},
+    "expectedResult": "401/403/400/404 or public status",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Unauthorized"
+    },
+    "responseTimeMs": 92.83280000000013,
+    "retryCount": 0,
+    "executionDurationMs": 92.83280000000013,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 48.50890000000012
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/",
+    "method": "POST",
+    "testCategory": "validation",
+    "testScenario": "rejects malformed payload",
+    "payload": {
+      "invalid": true
+    },
+    "expectedResult": "validation or auth rejection",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 13.584000000000742,
+    "retryCount": 0,
+    "executionDurationMs": 13.584000000000742,
+    "passFailStatus": "pass",
+    "validationNotes": "malformed payload sent through route stack",
+    "averageLatencyMs": 43.519628571428775
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks SQL injection payload",
+    "payload": {
+      "name": "'; DROP TABLE users; --"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 26.61030000000028,
+    "retryCount": 0,
+    "executionDurationMs": 26.61030000000028,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 41.405962500000214
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks XSS payload",
+    "payload": {
+      "html": "<script>alert(1)</script>"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 52.9338000000007,
+    "retryCount": 0,
+    "executionDurationMs": 52.9338000000007,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 42.6868333333336
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/",
+    "method": "POST",
+    "testCategory": "performance",
+    "testScenario": "records oversized payload behavior",
+    "payload": {
+      "data": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "expectedResult": "bounded response without crash",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 35.058899999999994,
+    "retryCount": 0,
+    "executionDurationMs": 35.058899999999994,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 41.92404000000024
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/access/validate",
+    "method": "GET",
+    "testCategory": "middleware",
+    "testScenario": "blocks unauthenticated access",
+    "payload": {},
+    "expectedResult": "401/403/400/404 or public status",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Unauthorized"
+    },
+    "responseTimeMs": 33.11789999999928,
+    "retryCount": 0,
+    "executionDurationMs": 33.11789999999928,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 41.12348181818197
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId",
+    "method": "PATCH",
+    "testCategory": "middleware",
+    "testScenario": "blocks unauthenticated access",
+    "payload": {},
+    "expectedResult": "401/403/400/404 or public status",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Unauthorized"
+    },
+    "responseTimeMs": 33.626000000000204,
+    "retryCount": 0,
+    "executionDurationMs": 33.626000000000204,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 40.49869166666682
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId",
+    "method": "PATCH",
+    "testCategory": "validation",
+    "testScenario": "rejects malformed payload",
+    "payload": {
+      "invalid": true
+    },
+    "expectedResult": "validation or auth rejection",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 36.756500000001324,
+    "retryCount": 0,
+    "executionDurationMs": 36.756500000001324,
+    "passFailStatus": "pass",
+    "validationNotes": "malformed payload sent through route stack",
+    "averageLatencyMs": 40.210830769231016
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId",
+    "method": "PATCH",
+    "testCategory": "security",
+    "testScenario": "blocks SQL injection payload",
+    "payload": {
+      "name": "'; DROP TABLE users; --"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 25.24830000000111,
+    "retryCount": 0,
+    "executionDurationMs": 25.24830000000111,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 39.14207857142888
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId",
+    "method": "PATCH",
+    "testCategory": "security",
+    "testScenario": "blocks XSS payload",
+    "payload": {
+      "html": "<script>alert(1)</script>"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 22.693600000000515,
+    "retryCount": 0,
+    "executionDurationMs": 22.693600000000515,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 38.04551333333366
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId",
+    "method": "PATCH",
+    "testCategory": "performance",
+    "testScenario": "records oversized payload behavior",
+    "payload": {
+      "data": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "expectedResult": "bounded response without crash",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 50.072000000000116,
+    "retryCount": 0,
+    "executionDurationMs": 50.072000000000116,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 38.79716875000031
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/invitations",
+    "method": "POST",
+    "testCategory": "middleware",
+    "testScenario": "blocks unauthenticated access",
+    "payload": {},
+    "expectedResult": "401/403/400/404 or public status",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Unauthorized"
+    },
+    "responseTimeMs": 29.672500000000582,
+    "retryCount": 0,
+    "executionDurationMs": 29.672500000000582,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 38.260423529412094
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/invitations",
+    "method": "POST",
+    "testCategory": "validation",
+    "testScenario": "rejects malformed payload",
+    "payload": {
+      "invalid": true
+    },
+    "expectedResult": "validation or auth rejection",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 37.654999999998836,
+    "retryCount": 0,
+    "executionDurationMs": 37.654999999998836,
+    "passFailStatus": "pass",
+    "validationNotes": "malformed payload sent through route stack",
+    "averageLatencyMs": 38.22678888888913
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/invitations",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks SQL injection payload",
+    "payload": {
+      "name": "'; DROP TABLE users; --"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 30.113100000000486,
+    "retryCount": 0,
+    "executionDurationMs": 30.113100000000486,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 37.7997526315792
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/invitations",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks XSS payload",
+    "payload": {
+      "html": "<script>alert(1)</script>"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 23.401099999999133,
+    "retryCount": 0,
+    "executionDurationMs": 23.401099999999133,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 37.0798200000002
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/invitations",
+    "method": "POST",
+    "testCategory": "performance",
+    "testScenario": "records oversized payload behavior",
+    "payload": {
+      "data": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "expectedResult": "bounded response without crash",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 19.305199999998877,
+    "retryCount": 0,
+    "executionDurationMs": 19.305199999998877,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 36.23340952380966
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/roles",
+    "method": "POST",
+    "testCategory": "middleware",
+    "testScenario": "blocks unauthenticated access",
+    "payload": {},
+    "expectedResult": "401/403/400/404 or public status",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Unauthorized"
+    },
+    "responseTimeMs": 19.972600000000966,
+    "retryCount": 0,
+    "executionDurationMs": 19.972600000000966,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 35.494281818181996
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/roles",
+    "method": "POST",
+    "testCategory": "validation",
+    "testScenario": "rejects malformed payload",
+    "payload": {
+      "invalid": true
+    },
+    "expectedResult": "validation or auth rejection",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 16.525799999999435,
+    "retryCount": 0,
+    "executionDurationMs": 16.525799999999435,
+    "passFailStatus": "pass",
+    "validationNotes": "malformed payload sent through route stack",
+    "averageLatencyMs": 34.669565217391444
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/roles",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks SQL injection payload",
+    "payload": {
+      "name": "'; DROP TABLE users; --"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 35.219600000000355,
+    "retryCount": 0,
+    "executionDurationMs": 35.219600000000355,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 34.692483333333485
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/roles",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks XSS payload",
+    "payload": {
+      "html": "<script>alert(1)</script>"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 50.622300000000905,
+    "retryCount": 0,
+    "executionDurationMs": 50.622300000000905,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 35.329676000000184
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/roles",
+    "method": "POST",
+    "testCategory": "performance",
+    "testScenario": "records oversized payload behavior",
+    "payload": {
+      "data": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "expectedResult": "bounded response without crash",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 23.48439999999937,
+    "retryCount": 0,
+    "executionDurationMs": 23.48439999999937,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 34.87408846153861
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/activate",
+    "method": "POST",
+    "testCategory": "middleware",
+    "testScenario": "blocks unauthenticated access",
+    "payload": {},
+    "expectedResult": "401/403/400/404 or public status",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Unauthorized"
+    },
+    "responseTimeMs": 25.227100000000064,
+    "retryCount": 0,
+    "executionDurationMs": 25.227100000000064,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 34.516792592592736
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/activate",
+    "method": "POST",
+    "testCategory": "validation",
+    "testScenario": "rejects malformed payload",
+    "payload": {
+      "invalid": true
+    },
+    "expectedResult": "validation or auth rejection",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 45.386500000000524,
+    "retryCount": 0,
+    "executionDurationMs": 45.386500000000524,
+    "passFailStatus": "pass",
+    "validationNotes": "malformed payload sent through route stack",
+    "averageLatencyMs": 34.904996428571586
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/activate",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks SQL injection payload",
+    "payload": {
+      "name": "'; DROP TABLE users; --"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 23.841700000000856,
+    "retryCount": 0,
+    "executionDurationMs": 23.841700000000856,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 34.523503448276045
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/activate",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks XSS payload",
+    "payload": {
+      "html": "<script>alert(1)</script>"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 35.30289999999877,
+    "retryCount": 0,
+    "executionDurationMs": 35.30289999999877,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 34.54948333333347
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/activate",
+    "method": "POST",
+    "testCategory": "performance",
+    "testScenario": "records oversized payload behavior",
+    "payload": {
+      "data": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "expectedResult": "bounded response without crash",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 33.194799999999304,
+    "retryCount": 0,
+    "executionDurationMs": 33.194799999999304,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 34.50578387096785
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/suspend",
+    "method": "POST",
+    "testCategory": "middleware",
+    "testScenario": "blocks unauthenticated access",
+    "payload": {},
+    "expectedResult": "401/403/400/404 or public status",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Unauthorized"
+    },
+    "responseTimeMs": 20.230900000000474,
+    "retryCount": 0,
+    "executionDurationMs": 20.230900000000474,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 34.05969375000012
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/suspend",
+    "method": "POST",
+    "testCategory": "validation",
+    "testScenario": "rejects malformed payload",
+    "payload": {
+      "invalid": true
+    },
+    "expectedResult": "validation or auth rejection",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 17.035100000000966,
+    "retryCount": 0,
+    "executionDurationMs": 17.035100000000966,
+    "passFailStatus": "pass",
+    "validationNotes": "malformed payload sent through route stack",
+    "averageLatencyMs": 33.54379696969712
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/suspend",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks SQL injection payload",
+    "payload": {
+      "name": "'; DROP TABLE users; --"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 30.10530000000108,
+    "retryCount": 0,
+    "executionDurationMs": 30.10530000000108,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 33.44266470588253
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/suspend",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks XSS payload",
+    "payload": {
+      "html": "<script>alert(1)</script>"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 31.884000000000015,
+    "retryCount": 0,
+    "executionDurationMs": 31.884000000000015,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 33.398131428571595
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/suspend",
+    "method": "POST",
+    "testCategory": "performance",
+    "testScenario": "records oversized payload behavior",
+    "payload": {
+      "data": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "expectedResult": "bounded response without crash",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 23.644500000000335,
+    "retryCount": 0,
+    "executionDurationMs": 23.644500000000335,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 33.1271972222224
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/warehouses",
+    "method": "POST",
+    "testCategory": "middleware",
+    "testScenario": "blocks unauthenticated access",
+    "payload": {},
+    "expectedResult": "401/403/400/404 or public status",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Unauthorized"
+    },
+    "responseTimeMs": 15.8721000000005,
+    "retryCount": 0,
+    "executionDurationMs": 15.8721000000005,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 32.66084324324343
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/warehouses",
+    "method": "POST",
+    "testCategory": "validation",
+    "testScenario": "rejects malformed payload",
+    "payload": {
+      "invalid": true
+    },
+    "expectedResult": "validation or auth rejection",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 17.649999999999636,
+    "retryCount": 0,
+    "executionDurationMs": 17.649999999999636,
+    "passFailStatus": "pass",
+    "validationNotes": "malformed payload sent through route stack",
+    "averageLatencyMs": 32.26582105263175
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/warehouses",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks SQL injection payload",
+    "payload": {
+      "name": "'; DROP TABLE users; --"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 18.49489999999969,
+    "retryCount": 0,
+    "executionDurationMs": 18.49489999999969,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 31.91272051282067
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/warehouses",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks XSS payload",
+    "payload": {
+      "html": "<script>alert(1)</script>"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 17.80779999999868,
+    "retryCount": 0,
+    "executionDurationMs": 17.80779999999868,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 31.56009750000012
+  },
+  {
+    "moduleName": "organization",
+    "endpoint": "/:organizationId/warehouses",
+    "method": "POST",
+    "testCategory": "performance",
+    "testScenario": "records oversized payload behavior",
+    "payload": {
+      "data": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "expectedResult": "bounded response without crash",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 34.96299999999974,
+    "retryCount": 0,
+    "executionDurationMs": 34.96299999999974,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 31.64309512195133
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "validation",
+    "testScenario": "validation source scan",
+    "expectedResult": "validators or parsers present",
+    "actualResult": "validation-ready",
+    "responseTimeMs": 76.77629999999954,
+    "retryCount": 0,
+    "executionDurationMs": 76.77629999999954,
+    "passFailStatus": "pass",
+    "validationNotes": "validator/parsing source located",
+    "averageLatencyMs": 32.71769523809534
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "observability",
+    "testScenario": "observability source scan",
+    "expectedResult": "logging/events/context responses present",
+    "actualResult": "observability-ready",
+    "responseTimeMs": 51.26809999999932,
+    "retryCount": 0,
+    "executionDurationMs": 51.26809999999932,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 33.14910000000008
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "event",
+    "testScenario": "event and workflow readiness scan",
+    "expectedResult": "events or explicit no-op flows located",
+    "actualResult": "event-workflow-ready",
+    "responseTimeMs": 50.15020000000004,
+    "retryCount": 0,
+    "executionDurationMs": 50.15020000000004,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 33.535488636363716
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "transaction",
+    "testScenario": "transaction and rollback readiness scan",
+    "expectedResult": "transaction/rollback/idempotency/repository boundary present",
+    "actualResult": "transaction-readiness-inspected",
+    "responseTimeMs": 46.64429999999993,
+    "retryCount": 0,
+    "executionDurationMs": 46.64429999999993,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 33.82679555555563
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "module construction",
+    "expectedResult": "module constructs and router exists",
+    "actualResult": "constructed",
+    "responseTimeMs": 2.9443999999984953,
+    "retryCount": 0,
+    "executionDurationMs": 2.9443999999984953,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 33.15543913043482
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class CreateOrganizationUseCase",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.7514999999984866,
+    "retryCount": 0,
+    "executionDurationMs": 0.7514999999984866,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 32.46599361702128
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class UpdateOrganizationUseCase",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.5424999999995634,
+    "retryCount": 0,
+    "executionDurationMs": 0.5424999999995634,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 31.800920833333333
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class InviteOrganizationMemberUseCase",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.5644000000011147,
+    "retryCount": 0,
+    "executionDurationMs": 0.5644000000011147,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 31.163440816326553
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class AssignOrganizationRoleUseCase",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.37150000000110595,
+    "retryCount": 0,
+    "executionDurationMs": 0.37150000000110595,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 30.547602000000044
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class ActivateOrganizationUseCase",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 1.8548000000009779,
+    "retryCount": 0,
+    "executionDurationMs": 1.8548000000009779,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 29.984998039215746
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class SuspendOrganizationUseCase",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3942000000006374,
+    "retryCount": 0,
+    "executionDurationMs": 0.3942000000006374,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 29.415944230769302
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class LinkWarehouseToOrganizationUseCase",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3404000000009546,
+    "retryCount": 0,
+    "executionDurationMs": 0.3404000000009546,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 28.867349056603864
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class ValidateOrganizationAccessUseCase",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3335000000006403,
+    "retryCount": 0,
+    "executionDurationMs": 0.3335000000006403,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 28.338944444444543
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class GetOrganizationHierarchyUseCase",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4620999999988271,
+    "retryCount": 0,
+    "executionDurationMs": 0.4620999999988271,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 27.8320927272728
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method execute",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3962999999985186,
+    "retryCount": 0,
+    "executionDurationMs": 0.3962999999985186,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 27.342167857142904
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method publish",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.40569999999934225,
+    "retryCount": 0,
+    "executionDurationMs": 0.40569999999934225,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 26.86959824561407
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method execute",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 1.9693999999999505,
+    "retryCount": 0,
+    "executionDurationMs": 1.9693999999999505,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 26.440284482758656
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method requireOrganization",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.8635999999987689,
+    "retryCount": 0,
+    "executionDurationMs": 0.8635999999987689,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 26.006781355932215
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method execute",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.5842000000011467,
+    "retryCount": 0,
+    "executionDurationMs": 0.5842000000011467,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 25.583071666666697
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method execute",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.7418000000016036,
+    "retryCount": 0,
+    "executionDurationMs": 0.7418000000016036,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 25.17583770491809
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method execute",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.7487999999993917,
+    "retryCount": 0,
+    "executionDurationMs": 0.7487999999993917,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 24.781853225806497
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method execute",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.34799999999995634,
+    "retryCount": 0,
+    "executionDurationMs": 0.34799999999995634,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 24.39401428571433
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method execute",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 3.075700000001234,
+    "retryCount": 0,
+    "executionDurationMs": 3.075700000001234,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 24.060915625000064
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method execute",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4875000000010914,
+    "retryCount": 0,
+    "executionDurationMs": 0.4875000000010914,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 23.69824769230777
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method execute",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.38589999999931024,
+    "retryCount": 0,
+    "executionDurationMs": 0.38589999999931024,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 23.34503030303037
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class OrganizationContractAdapter",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3522000000011758,
+    "retryCount": 0,
+    "executionDurationMs": 0.3522000000011758,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 23.001853731343367
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method validateAccess",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.35169999999925494,
+    "retryCount": 0,
+    "executionDurationMs": 0.35169999999925494,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 22.66876323529419
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class OrganizationHierarchyAggregate",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 2.2294999999994616,
+    "retryCount": 0,
+    "executionDurationMs": 2.2294999999994616,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 22.37254202898557
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class OrganizationMembershipAggregate",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.37190000000009604,
+    "retryCount": 0,
+    "executionDurationMs": 0.37190000000009604,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 22.05824714285721
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method constructor",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4074000000000524,
+    "retryCount": 0,
+    "executionDurationMs": 0.4074000000000524,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 21.75330563380288
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class OrganizationAggregate",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3283000000010361,
+    "retryCount": 0,
+    "executionDurationMs": 0.3283000000010361,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 21.45573611111119
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method constructor",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3135999999994965,
+    "retryCount": 0,
+    "executionDurationMs": 0.3135999999994965,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 21.166117808219248
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class HierarchyValidationService",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.31960000000071886,
+    "retryCount": 0,
+    "executionDurationMs": 0.31960000000071886,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 20.884408108108186
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method ensureNoCycle",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 3.9579999999987194,
+    "retryCount": 0,
+    "executionDurationMs": 3.9579999999987194,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 20.658722666666726
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class OrganizationAccessPolicy",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4385000000002037,
+    "retryCount": 0,
+    "executionDurationMs": 0.4385000000002037,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 20.392667105263218
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method requireOrganizationAccess",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3654999999998836,
+    "retryCount": 0,
+    "executionDurationMs": 0.3654999999998836,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 20.132574025974087
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class OrganizationIsolationService",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.34860000000117,
+    "retryCount": 0,
+    "executionDurationMs": 0.34860000000117,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 19.878933333333407
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method enforceTenantOwnership",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3636000000005879,
+    "retryCount": 0,
+    "executionDurationMs": 0.3636000000005879,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 19.631903797468436
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class OrganizationMembershipService",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.32040000000051805,
+    "retryCount": 0,
+    "executionDurationMs": 0.32040000000051805,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 19.390510000000084
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method canAssignRole",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.35599999999976717,
+    "retryCount": 0,
+    "executionDurationMs": 0.35599999999976717,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 19.155516049382797
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class MembershipRole",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3269000000000233,
+    "retryCount": 0,
+    "executionDurationMs": 0.3269000000000233,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 18.925898780487884
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method constructor",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3317000000006374,
+    "retryCount": 0,
+    "executionDurationMs": 0.3317000000006374,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 18.701872289156714
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method toString",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 5.031799999998839,
+    "retryCount": 0,
+    "executionDurationMs": 5.031799999998839,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 18.539133333333407
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class OrganizationId",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.363999999999578,
+    "retryCount": 0,
+    "executionDurationMs": 0.363999999999578,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 18.325308235294184
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method constructor",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4675999999999476,
+    "retryCount": 0,
+    "executionDurationMs": 0.4675999999999476,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 18.117660465116344
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method toString",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 3.116100000001097,
+    "retryCount": 0,
+    "executionDurationMs": 3.116100000001097,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 17.945228735632263
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class OrganizationPath",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4797999999991589,
+    "retryCount": 0,
+    "executionDurationMs": 0.4797999999991589,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 17.746757954545522
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method constructor",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4070000000010623,
+    "retryCount": 0,
+    "executionDurationMs": 0.4070000000010623,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 17.551929213483223
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method child",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4883000000008906,
+    "retryCount": 0,
+    "executionDurationMs": 0.4883000000008906,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 17.36233333333342
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method contains",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4318999999995867,
+    "retryCount": 0,
+    "executionDurationMs": 0.4318999999995867,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 17.1762846153847
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method toString",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 1.841099999999642,
+    "retryCount": 0,
+    "executionDurationMs": 1.841099999999642,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 17.009597826087035
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class OrganizationStatus",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4136999999991531,
+    "retryCount": 0,
+    "executionDurationMs": 0.4136999999991531,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 16.831147311828023
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method constructor",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3459999999995489,
+    "retryCount": 0,
+    "executionDurationMs": 0.3459999999995489,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 16.65577340425538
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method toString",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 2.6252999999996973,
+    "retryCount": 0,
+    "executionDurationMs": 2.6252999999996973,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 16.508084210526373
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class PostgresOrganizationRepository",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4533999999985099,
+    "retryCount": 0,
+    "executionDurationMs": 0.4533999999985099,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 16.340847916666707
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method create",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.40350000000034925,
+    "retryCount": 0,
+    "executionDurationMs": 0.40350000000034925,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 16.176545360824786
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method update",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 3.029399999999441,
+    "retryCount": 0,
+    "executionDurationMs": 3.029399999999441,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 16.04239081632657
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method setStatus",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.5973000000012689,
+    "retryCount": 0,
+    "executionDurationMs": 0.5973000000012689,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 15.88637979797985
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method assignRole",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3916000000008353,
+    "retryCount": 0,
+    "executionDurationMs": 0.3916000000008353,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 15.731432000000058
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method linkWarehouse",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4488999999994121,
+    "retryCount": 0,
+    "executionDurationMs": 0.4488999999994121,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 15.580119801980251
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method findById",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 3.1538999999993393,
+    "retryCount": 0,
+    "executionDurationMs": 3.1538999999993393,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 15.458294117647105
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method findByNameOrCode",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.41849999999976717,
+    "retryCount": 0,
+    "executionDurationMs": 0.41849999999976717,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 15.31227669902917
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method listHierarchy",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.38949999999931606,
+    "retryCount": 0,
+    "executionDurationMs": 0.38949999999931606,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 15.168788461538497
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class OrganizationModule",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4110000000000582,
+    "retryCount": 0,
+    "executionDurationMs": 0.4110000000000582,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 15.028238095238132
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method getRouter",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3912000000000262,
+    "retryCount": 0,
+    "executionDurationMs": 0.3912000000000262,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 14.890152830188715
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method getContract",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 3.49159999999938,
+    "retryCount": 0,
+    "executionDurationMs": 3.49159999999938,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 14.783624299065451
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method getOrchestrator",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.39539999999942665,
+    "retryCount": 0,
+    "executionDurationMs": 0.39539999999942665,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 14.650400000000024
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class OrganizationOrchestrator",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.36930000000029395,
+    "retryCount": 0,
+    "executionDurationMs": 0.36930000000029395,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 14.519380733944981
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method validateOperationalScope",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.30860000000029686,
+    "retryCount": 0,
+    "executionDurationMs": 0.30860000000029686,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 14.390191818181847
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class OrganizationController",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.511000000000422,
+    "retryCount": 0,
+    "executionDurationMs": 0.511000000000422,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 14.265154054054086
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method create",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.34839999999894644,
+    "retryCount": 0,
+    "executionDurationMs": 0.34839999999894644,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 14.140897321428595
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method buildOrganizationCode",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.36570000000028813,
+    "retryCount": 0,
+    "executionDurationMs": 0.36570000000028813,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 14.018992920354007
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method update",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3750999999992928,
+    "retryCount": 0,
+    "executionDurationMs": 0.3750999999992928,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 13.899309649122825
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method inviteMember",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 1.7838000000010652,
+    "retryCount": 0,
+    "executionDurationMs": 1.7838000000010652,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 13.793957391304376
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method assignRole",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.38699999999880674,
+    "retryCount": 0,
+    "executionDurationMs": 0.38699999999880674,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 13.67838017241381
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method activate",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.6508000000012544,
+    "retryCount": 0,
+    "executionDurationMs": 0.6508000000012544,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 13.567033333333361
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method suspend",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4158999999999651,
+    "retryCount": 0,
+    "executionDurationMs": 0.4158999999999651,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 13.455583050847485
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method linkWarehouse",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.38879999999880965,
+    "retryCount": 0,
+    "executionDurationMs": 0.38879999999880965,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 13.345778151260522
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method validateAccess",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.44629999999961,
+    "retryCount": 0,
+    "executionDurationMs": 0.44629999999961,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 13.238282500000015
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method hierarchy",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 5.417299999999159,
+    "retryCount": 0,
+    "executionDurationMs": 5.417299999999159,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 13.173646280991742
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class OrgAuthMiddleware",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4094999999997526,
+    "retryCount": 0,
+    "executionDurationMs": 0.4094999999997526,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 13.069022131147547
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class OrgScopeMiddleware",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3602999999984604,
+    "retryCount": 0,
+    "executionDurationMs": 0.3602999999984604,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 12.965699186991863
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class OrgMembershipMiddleware",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.32560000000012224,
+    "retryCount": 0,
+    "executionDurationMs": 0.32560000000012224,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 12.8637629032258
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class OrgIsolationMiddleware",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4323000000003958,
+    "retryCount": 0,
+    "executionDurationMs": 0.4323000000003958,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 12.764311199999996
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class OrgAuditMiddleware",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.33039999999891734,
+    "retryCount": 0,
+    "executionDurationMs": 0.33039999999891734,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 12.665629365079353
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class OrgSuspiciousActivityMiddleware",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3184000000001106,
+    "retryCount": 0,
+    "executionDurationMs": 0.3184000000001106,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 12.568407086614162
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class OrganizationRoutes",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 4.4311000000016065,
+    "retryCount": 0,
+    "executionDurationMs": 4.4311000000016065,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 12.504834375000002
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method getRouter",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.38220000000001164,
+    "retryCount": 0,
+    "executionDurationMs": 0.38220000000001164,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 12.410860465116281
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "method register",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.30979999999908614,
+    "retryCount": 0,
+    "executionDurationMs": 0.30979999999908614,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 12.317775384615379
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "unit",
+    "testScenario": "class OrganizationValidator",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.5038000000004104,
+    "retryCount": 0,
+    "executionDurationMs": 0.5038000000004104,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 12.227592366412212
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "concurrency",
+    "testScenario": "parallel metadata scan",
+    "expectedResult": "all concurrent scans return same count",
+    "actualResult": "consistent-count=29",
+    "responseTimeMs": 996.0089000000007,
+    "retryCount": 0,
+    "executionDurationMs": 996.0089000000007,
+    "passFailStatus": "pass",
+    "concurrencyNotes": "25 concurrent metadata scans matched",
+    "averageLatencyMs": 19.680481060606063
+  },
+  {
+    "moduleName": "organization",
+    "testCategory": "observability",
+    "testScenario": "report generation",
+    "expectedResult": "all report files generated",
+    "actualResult": "reports-generated",
+    "responseTimeMs": 77.79739999999947,
+    "retryCount": 0,
+    "executionDurationMs": 77.79739999999947,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 20.11745037593985
+  }
+]

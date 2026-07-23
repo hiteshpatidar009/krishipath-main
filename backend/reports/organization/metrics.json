@@ -1,0 +1,21 @@
+{
+  "moduleName": "organization",
+  "generatedAt": "2026-07-02T06:54:26.086Z",
+  "counts": {
+    "endpoints": 37,
+    "functions": 85,
+    "records": 133,
+    "pass": 133,
+    "fail": 0,
+    "warning": 0
+  },
+  "latency": {
+    "avg": 20.11745037593985,
+    "p50": 0.7418000000016036,
+    "p95": 51.26809999999932,
+    "p99": 92.83280000000013,
+    "max": 996.0089000000007,
+    "count": 133
+  },
+  "findings": []
+}

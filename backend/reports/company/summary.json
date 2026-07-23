@@ -1,0 +1,21 @@
+{
+  "moduleName": "company",
+  "generatedAt": "2026-07-02T06:54:26.834Z",
+  "counts": {
+    "endpoints": 52,
+    "functions": 91,
+    "records": 154,
+    "pass": 154,
+    "fail": 0,
+    "warning": 0
+  },
+  "latency": {
+    "avg": 18.44278571428561,
+    "p50": 2.5689000000002125,
+    "p95": 61.500999999998385,
+    "p99": 152.49269999999888,
+    "max": 812.5175999999992,
+    "count": 154
+  },
+  "findings": []
+}

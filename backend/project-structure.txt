@@ -1,0 +1,447 @@
+backend
+├── database
+│   ├── db_1.schema.sql
+│   ├── db_2.schema.sql
+│   └── db_3.schema.sql
+├── postman
+│   └── rsbc.postman_collection.json
+├── src
+│   ├── core
+│   │   └── base
+│   │       ├── base.repository.ts
+│   │       ├── base.service.ts
+│   │       └── base.validator.ts
+│   ├── infrastructure
+│   │   ├── config
+│   │   │   ├── env.ts
+│   │   │   └── validate_env.ts
+│   │   ├── database
+│   │   │   ├── mongodb
+│   │   │   │   ├── connections
+│   │   │   │   │   └── mongodb.connection.ts
+│   │   │   │   ├── repositories
+│   │   │   │   │   ├── application-log.repository.ts
+│   │   │   │   │   ├── audit-log.repository.ts
+│   │   │   │   │   ├── event-log.repository.ts
+│   │   │   │   │   └── request-trace.repository.ts
+│   │   │   │   ├── schemas
+│   │   │   │   │   ├── application-log.schema.ts
+│   │   │   │   │   ├── audit-log.schema.ts
+│   │   │   │   │   ├── event-log.schema.ts
+│   │   │   │   │   ├── integration-log.schema.ts
+│   │   │   │   │   └── request-trace.schema.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── postgres
+│   │   │   │   ├── connections
+│   │   │   │   │   ├── db1.connection.ts
+│   │   │   │   │   ├── db2.connection.ts
+│   │   │   │   │   ├── db3.connection.ts
+│   │   │   │   │   └── postgres.connection.types.ts
+│   │   │   │   ├── migrations
+│   │   │   │   │   ├── db1
+│   │   │   │   │   ├── db2
+│   │   │   │   │   └── db3
+│   │   │   │   ├── repositories
+│   │   │   │   │   ├── db1
+│   │   │   │   │   ├── db2
+│   │   │   │   │   └── db3
+│   │   │   │   ├── schemas
+│   │   │   │   │   ├── db1
+│   │   │   │   │   │   ├── all.schema.ts
+│   │   │   │   │   │   ├── api-key.schema.ts
+│   │   │   │   │   │   ├── audit.schema.ts
+│   │   │   │   │   │   ├── auth.schema.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── notification.schema.ts
+│   │   │   │   │   │   ├── role.schema.ts
+│   │   │   │   │   │   ├── subscription.schema.ts
+│   │   │   │   │   │   ├── tenant.schema.ts
+│   │   │   │   │   │   ├── user.schema.ts
+│   │   │   │   │   │   └── workflow.schema.ts
+│   │   │   │   │   ├── db2
+│   │   │   │   │   │   ├── all.schema.ts
+│   │   │   │   │   │   ├── customer.schema.ts
+│   │   │   │   │   │   ├── document.schema.ts
+│   │   │   │   │   │   ├── finance.schema.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── inventory.schema.ts
+│   │   │   │   │   │   ├── product.schema.ts
+│   │   │   │   │   │   ├── purchase.schema.ts
+│   │   │   │   │   │   ├── quality.schema.ts
+│   │   │   │   │   │   ├── return.schema.ts
+│   │   │   │   │   │   ├── sales.schema.ts
+│   │   │   │   │   │   ├── shipment.schema.ts
+│   │   │   │   │   │   ├── supplier.schema.ts
+│   │   │   │   │   │   └── warehouse.schema.ts
+│   │   │   │   │   └── db3
+│   │   │   │   │       ├── all.schema.ts
+│   │   │   │   │       ├── analytics.schema.ts
+│   │   │   │   │       ├── archival.schema.ts
+│   │   │   │   │       ├── dashboard.schema.ts
+│   │   │   │   │       ├── forecasting.schema.ts
+│   │   │   │   │       ├── index.ts
+│   │   │   │   │       ├── reporting.schema.ts
+│   │   │   │   │       └── search-index.schema.ts
+│   │   │   │   ├── seeds
+│   │   │   │   │   ├── db1
+│   │   │   │   │   ├── db2
+│   │   │   │   │   └── db3
+│   │   │   │   ├── utils
+│   │   │   │   │   ├── audit-fields.util.ts
+│   │   │   │   │   ├── optimistic-lock.util.ts
+│   │   │   │   │   ├── pagination.util.ts
+│   │   │   │   │   ├── soft-delete.util.ts
+│   │   │   │   │   └── transaction.util.ts
+│   │   │   │   ├── base-postgres.connection.ts
+│   │   │   │   ├── postgres-connection.options.ts
+│   │   │   │   ├── postgres-connectivity.check.ts
+│   │   │   │   └── postgres-network.diagnostic.ts
+│   │   │   ├── redis
+│   │   │   │   ├── cache-prefixes.ts
+│   │   │   │   ├── cache.keys.ts
+│   │   │   │   ├── cache.ttl.ts
+│   │   │   │   ├── redis.connection.ts
+│   │   │   │   └── redis.service.ts
+│   │   │   ├── database.constants.ts
+│   │   │   ├── database.manager.ts
+│   │   │   ├── database.types.ts
+│   │   │   └── index.ts
+│   │   └── logger
+│   │       ├── constants
+│   │       │   ├── logger.constants.ts
+│   │       │   └── logger.messages.ts
+│   │       ├── decorators
+│   │       │   └── log-execution.decorator.ts
+│   │       ├── enums
+│   │       │   ├── log-level.enum.ts
+│   │       │   ├── log-source.enum.ts
+│   │       │   ├── log-status.enum.ts
+│   │       │   └── log-type.enum.ts
+│   │       ├── interfaces
+│   │       │   ├── application-log.interface.ts
+│   │       │   ├── audit-log.interface.ts
+│   │       │   ├── error-log.interface.ts
+│   │       │   ├── http-log.interface.ts
+│   │       │   ├── log-context.interface.ts
+│   │       │   ├── log-metadata.interface.ts
+│   │       │   ├── request-trace.interface.ts
+│   │       │   └── system-log.interface.ts
+│   │       ├── middleware
+│   │       │   ├── error-logger.middleware.ts
+│   │       │   ├── request-id.middleware.ts
+│   │       │   ├── request-logger.middleware.ts
+│   │       │   ├── response-logger.middleware.ts
+│   │       │   └── trace-id.middleware.ts
+│   │       ├── repositories
+│   │       │   ├── application-log.repository.ts
+│   │       │   ├── audit-log.repository.ts
+│   │       │   ├── error-log.repository.ts
+│   │       │   ├── request-trace.repository.ts
+│   │       │   └── system-log.repository.ts
+│   │       ├── schemas
+│   │       │   ├── application-log.schema.ts
+│   │       │   ├── audit-log.schema.ts
+│   │       │   ├── error-log.schema.ts
+│   │       │   ├── request-trace.schema.ts
+│   │       │   └── system-log.schema.ts
+│   │       ├── services
+│   │       │   ├── audit-logger.service.ts
+│   │       │   ├── error-logger.service.ts
+│   │       │   ├── logger.service.ts
+│   │       │   ├── request-logger.service.ts
+│   │       │   ├── runtime-logger.service.ts
+│   │       │   ├── system-logger.service.ts
+│   │       │   └── trace-logger.service.ts
+│   │       ├── types
+│   │       │   ├── logger-union.types.ts
+│   │       │   ├── logger.types.ts
+│   │       │   └── request-context.types.ts
+│   │       ├── utils
+│   │       │   ├── body-sanitizer.utils.ts
+│   │       │   ├── error-parser.utils.ts
+│   │       │   ├── file-location.utils.ts
+│   │       │   ├── header-sanitizer.utils.ts
+│   │       │   ├── logger.utils.ts
+│   │       │   ├── metadata.utils.ts
+│   │       │   ├── performance.utils.ts
+│   │       │   ├── request-parser.utils.ts
+│   │       │   ├── response-parser.utils.ts
+│   │       │   └── stack-trace.utils.ts
+│   │       ├── validators
+│   │       │   ├── audit-log.validator.ts
+│   │       │   ├── log-entry.validator.ts
+│   │       │   └── request-trace.validator.ts
+│   │       ├── index.ts
+│   │       ├── logger.constants.ts
+│   │       ├── logger.interface.ts
+│   │       ├── logger.middleware.ts
+│   │       ├── logger.model.ts
+│   │       ├── logger.module.ts
+│   │       ├── logger.service.ts
+│   │       ├── logger.types.ts
+│   │       └── logger.utils.ts
+│   ├── modules
+│   │   ├── activity-log
+│   │   │   ├── controllers
+│   │   │   │   └── activity-log.controller.ts
+│   │   │   ├── dto
+│   │   │   │   └── activity-log.dto.ts
+│   │   │   ├── models
+│   │   │   │   └── activity-log.model.ts
+│   │   │   ├── repositories
+│   │   │   │   └── activity-log.repository.ts
+│   │   │   ├── services
+│   │   │   │   └── activity-log.service.ts
+│   │   │   ├── validators
+│   │   │   │   └── activity-log.validator.ts
+│   │   │   ├── index.ts
+│   │   │   └── module.ts
+│   │   ├── audit-log
+│   │   │   ├── controllers
+│   │   │   │   └── audit-log.controller.ts
+│   │   │   ├── dto
+│   │   │   │   └── audit-log.dto.ts
+│   │   │   ├── repositories
+│   │   │   │   └── audit-log.repository.ts
+│   │   │   ├── services
+│   │   │   │   └── audit-log.service.ts
+│   │   │   ├── validators
+│   │   │   │   └── audit-log.validator.ts
+│   │   │   ├── index.ts
+│   │   │   └── module.ts
+│   │   ├── auth
+│   │   │   ├── constants
+│   │   │   │   ├── perm.catalog.ts
+│   │   │   │   └── role.templates.ts
+│   │   │   ├── controllers
+│   │   │   │   └── auth.controller.ts
+│   │   │   ├── dto
+│   │   │   │   ├── email.start.dto.ts
+│   │   │   │   ├── email.verify.dto.ts
+│   │   │   │   ├── login.dto.ts
+│   │   │   │   ├── login.start.dto.ts
+│   │   │   │   ├── login.verify.dto.ts
+│   │   │   │   ├── mfa.app.dto.ts
+│   │   │   │   ├── mfa.app.start.dto.ts
+│   │   │   │   ├── mfa.app.verify-setup.dto.ts
+│   │   │   │   ├── mfa.phone.dto.ts
+│   │   │   │   ├── mfa.verify.dto.ts
+│   │   │   │   ├── plan.dto.ts
+│   │   │   │   ├── role.dto.ts
+│   │   │   │   ├── ses.revoke.dto.ts
+│   │   │   │   ├── sign.dto.ts
+│   │   │   │   ├── tenant.dto.ts
+│   │   │   │   └── user.dto.ts
+│   │   │   ├── errors
+│   │   │   │   └── auth.error.ts
+│   │   │   ├── events
+│   │   │   │   ├── auth-event.interface.ts
+│   │   │   │   └── auth.events.ts
+│   │   │   ├── middlewares
+│   │   │   │   └── auth.middleware.ts
+│   │   │   ├── repositories
+│   │   │   │   └── auth.repository.ts
+│   │   │   ├── services
+│   │   │   │   ├── auth.service.ts
+│   │   │   │   ├── captcha.service.ts
+│   │   │   │   ├── mfa.service.ts
+│   │   │   │   ├── otp.service.ts
+│   │   │   │   ├── pass.service.ts
+│   │   │   │   ├── sec.service.ts
+│   │   │   │   ├── token.service.ts
+│   │   │   │   └── totp.service.ts
+│   │   │   ├── types
+│   │   │   │   ├── claims.type.ts
+│   │   │   │   ├── ctx.type.ts
+│   │   │   │   └── login.ctx.type.ts
+│   │   │   ├── utils
+│   │   │   │   └── auth.utils.ts
+│   │   │   ├── validators
+│   │   │   │   ├── email.start.validator.ts
+│   │   │   │   ├── email.verify.validator.ts
+│   │   │   │   ├── login.start.validator.ts
+│   │   │   │   ├── login.validator.ts
+│   │   │   │   ├── login.verify.validator.ts
+│   │   │   │   ├── mfa.app.start.validator.ts
+│   │   │   │   ├── mfa.app.validator.ts
+│   │   │   │   ├── mfa.app.verify-setup.validator.ts
+│   │   │   │   ├── mfa.phone.validator.ts
+│   │   │   │   ├── mfa.verify.validator.ts
+│   │   │   │   ├── plan.validator.ts
+│   │   │   │   ├── role.validator.ts
+│   │   │   │   ├── ses.revoke.validator.ts
+│   │   │   │   ├── sign.validator.ts
+│   │   │   │   ├── tenant.validator.ts
+│   │   │   │   └── user.validator.ts
+│   │   │   ├── index.ts
+│   │   │   └── module.ts
+│   │   ├── document
+│   │   │   ├── controllers
+│   │   │   │   └── document.controller.ts
+│   │   │   ├── dto
+│   │   │   │   └── document.dto.ts
+│   │   │   ├── repositories
+│   │   │   │   └── document.repository.ts
+│   │   │   ├── services
+│   │   │   │   └── document.service.ts
+│   │   │   ├── validators
+│   │   │   │   └── document.validator.ts
+│   │   │   ├── index.ts
+│   │   │   └── module.ts
+│   │   ├── email
+│   │   │   ├── controllers
+│   │   │   │   └── email.controller.ts
+│   │   │   ├── dto
+│   │   │   │   └── email.dto.ts
+│   │   │   ├── services
+│   │   │   │   └── email.service.ts
+│   │   │   ├── validators
+│   │   │   │   └── email.validator.ts
+│   │   │   ├── index.ts
+│   │   │   └── module.ts
+│   │   ├── file-storage
+│   │   │   ├── controllers
+│   │   │   │   └── file-storage.controller.ts
+│   │   │   ├── dto
+│   │   │   │   └── file-sign.dto.ts
+│   │   │   ├── services
+│   │   │   │   └── file-storage.service.ts
+│   │   │   ├── validators
+│   │   │   │   └── file-sign.validator.ts
+│   │   │   ├── index.ts
+│   │   │   └── module.ts
+│   │   ├── notification
+│   │   │   ├── controllers
+│   │   │   │   └── notification.controller.ts
+│   │   │   ├── dto
+│   │   │   │   ├── notification.dto.ts
+│   │   │   │   └── template.dto.ts
+│   │   │   ├── repositories
+│   │   │   │   └── notification.repository.ts
+│   │   │   ├── services
+│   │   │   │   ├── notification-dispatch.service.ts
+│   │   │   │   └── notification.service.ts
+│   │   │   ├── validators
+│   │   │   │   ├── notification.validator.ts
+│   │   │   │   └── template.validator.ts
+│   │   │   ├── index.ts
+│   │   │   └── module.ts
+│   │   ├── push-notification
+│   │   │   ├── controllers
+│   │   │   │   └── push.controller.ts
+│   │   │   ├── dto
+│   │   │   │   └── push.dto.ts
+│   │   │   ├── services
+│   │   │   │   └── push.service.ts
+│   │   │   ├── validators
+│   │   │   │   └── push.validator.ts
+│   │   │   ├── index.ts
+│   │   │   └── module.ts
+│   │   ├── role-permission
+│   │   │   ├── controllers
+│   │   │   │   └── role-permission.controller.ts
+│   │   │   ├── dto
+│   │   │   │   ├── assign-role-permissions.dto.ts
+│   │   │   │   ├── create-role.dto.ts
+│   │   │   │   └── update-role.dto.ts
+│   │   │   ├── errors
+│   │   │   │   └── role-permission.error.ts
+│   │   │   ├── repositories
+│   │   │   │   └── role-permission.repository.ts
+│   │   │   ├── services
+│   │   │   │   └── role-permission.service.ts
+│   │   │   ├── validators
+│   │   │   │   ├── assign-role-permissions.validator.ts
+│   │   │   │   ├── create-role.validator.ts
+│   │   │   │   ├── role-id-param.validator.ts
+│   │   │   │   └── update-role.validator.ts
+│   │   │   ├── BOOTSTRAP_INTEGRATION.md
+│   │   │   ├── COMPLETION_SUMMARY.md
+│   │   │   ├── index.ts
+│   │   │   └── module.ts
+│   │   └── sms
+│   │       ├── controllers
+│   │       │   └── sms.controller.ts
+│   │       ├── dto
+│   │       │   └── sms.dto.ts
+│   │       ├── services
+│   │       │   └── sms.service.ts
+│   │       ├── validators
+│   │       │   └── sms.validator.ts
+│   │       ├── index.ts
+│   │       └── module.ts
+│   ├── shared
+│   │   ├── context
+│   │   │   └── request-context.ts
+│   │   ├── db
+│   │   │   └── sql-result.ts
+│   │   ├── errors
+│   │   │   └── app.error.ts
+│   │   ├── http
+│   │   │   ├── api-error.ts
+│   │   │   └── api-response.ts
+│   │   ├── integrations
+│   │   │   └── twilio.client.ts
+│   │   ├── messages
+│   │   │   ├── delivery.dto.ts
+│   │   │   ├── dev-message.provider.ts
+│   │   │   ├── http-message.provider.ts
+│   │   │   ├── message-provider.factory.ts
+│   │   │   ├── message-provider.interface.ts
+│   │   │   └── message.dto.ts
+│   │   ├── security
+│   │   │   ├── constants
+│   │   │   │   └── security.constants.ts
+│   │   │   ├── dtos
+│   │   │   │   ├── rate-limit-options.dto.ts
+│   │   │   │   └── security-context.dto.ts
+│   │   │   ├── guards
+│   │   │   │   ├── perm.guard.ts
+│   │   │   │   ├── role.guard.ts
+│   │   │   │   └── tenant.guard.ts
+│   │   │   ├── middlewares
+│   │   │   │   ├── anti-tamper.middleware.ts
+│   │   │   │   ├── audit-log.middleware.ts
+│   │   │   │   ├── auth.middleware.ts
+│   │   │   │   ├── authorization.middleware.ts
+│   │   │   │   ├── input-sanitization.middleware.ts
+│   │   │   │   ├── ip-filter.middleware.ts
+│   │   │   │   ├── rate-limit.middleware.ts
+│   │   │   │   ├── request-size-limit.middleware.ts
+│   │   │   │   └── schema-validation.middleware.ts
+│   │   │   ├── sanitizers
+│   │   │   │   ├── sql.sanitizer.ts
+│   │   │   │   └── xss.sanitizer.ts
+│   │   │   ├── services
+│   │   │   │   ├── encryption.service.ts
+│   │   │   │   ├── hash.service.ts
+│   │   │   │   ├── signature.service.ts
+│   │   │   │   └── token.service.ts
+│   │   │   ├── types
+│   │   │   │   └── security-request.type.ts
+│   │   │   ├── utils
+│   │   │   │   ├── fingerprint.util.ts
+│   │   │   │   ├── id.util.ts
+│   │   │   │   └── rand.util.ts
+│   │   │   ├── validators
+│   │   │   │   ├── business-rule.validator.ts
+│   │   │   │   └── schema.validator.ts
+│   │   │   ├── index.ts
+│   │   │   └── module.ts
+│   │   ├── utils
+│   │   │   ├── async_handler.ts
+│   │   │   └── hash.util.ts
+│   │   └── validators
+│   │       └── pagination.validator.ts
+│   ├── types
+│   │   └── jsonwebtoken.d.ts
+│   ├── app.ts
+│   ├── index.ts
+│   └── server.ts
+├── .env
+├── .env.example
+├── .env.local
+├── db.js
+├── package.json
+├── project-structure.txt
+└── tsconfig.json

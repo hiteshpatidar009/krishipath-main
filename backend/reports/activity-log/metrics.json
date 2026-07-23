@@ -1,0 +1,21 @@
+{
+  "moduleName": "activity-log",
+  "generatedAt": "2026-07-02T06:54:25.603Z",
+  "counts": {
+    "endpoints": 6,
+    "functions": 22,
+    "records": 39,
+    "pass": 39,
+    "fail": 0,
+    "warning": 0
+  },
+  "latency": {
+    "avg": 27.28592307692312,
+    "p50": 0.7588999999989028,
+    "p95": 163.77000000000044,
+    "p99": 417.34390000000167,
+    "max": 417.34390000000167,
+    "count": 39
+  },
+  "findings": []
+}

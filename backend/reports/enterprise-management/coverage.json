@@ -1,0 +1,12 @@
+{
+  "moduleName": "enterprise-management",
+  "routeCoverage": 118,
+  "serviceCoverage": 185,
+  "middlewareCoverage": 38,
+  "validatorCoverage": 27,
+  "workflowCoverage": 0,
+  "eventCoverage": 1,
+  "transactionCoverage": 1,
+  "observabilityCoverage": 2,
+  "concurrencyCoverage": 1
+}

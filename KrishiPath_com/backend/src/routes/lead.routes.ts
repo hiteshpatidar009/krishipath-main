@@ -1,0 +1,15 @@
+import { Router } from 'express';
+import { z } from 'zod';
+import { Lead } from '../models/lead.model.js';
+import { authorize } from '../middleware/auth.js';
+import { validate } from '../middleware/validate.js';
+import { asyncHandler } from '../shared/async-handler.js';
+import { AppError } from '../shared/errors.js';
+import { ok } from '../shared/response.js';
+
+export const leadRouter = Router();
+const view = (l: Record<string, unknown>) => ({ id: l.publicId, name: l.name, phone: l.phone, state: l.state, district: l.district, crop: l.crop, campaignName: l.campaignName, campaignId: l.campaignPublicId, requestedAt: l.requestedAt, status: l.status, landSize: l.landSize, language: l.language });
+const filterFor = (req: Parameters<typeof leadRouter.get>[1] extends never ? never : any) => { const q = req.query; const f: Record<string, unknown> = { company: req.user.company, deletedAt: null }; if (q.status && q.status !== 'all') f.status = q.status; if (q.state) f.state = q.state; if (q.crop) f.crop = q.crop; if (q.campaignId) f.campaignPublicId = q.campaignId; if (q.search) f.$text = { $search: String(q.search) }; return f; };
+leadRouter.get('/', asyncHandler(async (req, res) => { const page = Math.max(1, Number(req.query.page) || 1); const limit = Math.min(100, Math.max(1, Number(req.query.limit) || 20)); const filter = filterFor(req); const [rows, total] = await Promise.all([Lead.find(filter).sort({ requestedAt: -1 }).skip((page - 1) * limit).limit(limit).lean(), Lead.countDocuments(filter)]); ok(res, rows.map((x) => view(x as unknown as Record<string, unknown>)), undefined, 200, { total, page, limit }); }));
+leadRouter.patch('/:id', authorize('leads'), validate(z.object({ body: z.object({ status: z.enum(['new', 'contacted', 'interested', 'converted', 'not-interested']), notes: z.string().max(2000).optional() }), query: z.any(), params: z.any() })), asyncHandler(async (req, res) => { const lead = await Lead.findOneAndUpdate({ company: req.user!.company, publicId: req.params.id, deletedAt: null }, req.body, { new: true, runValidators: true }).lean(); if (!lead) throw new AppError(404, 'Lead not found'); ok(res, view(lead as unknown as Record<string, unknown>), 'Lead updated'); }));
+leadRouter.get('/export/csv', authorize('leads'), asyncHandler(async (req, res) => { const rows = await Lead.find(filterFor(req)).sort({ requestedAt: -1 }).lean(); const esc = (v: unknown) => `"${String(v ?? '').replaceAll('"', '""')}"`; const header = ['ID','Name','Phone','State','District','Crop','Campaign','Status','Land Size','Language','Requested At']; const csv = [header.join(','), ...rows.map((l) => [l.publicId,l.name,l.phone,l.state,l.district,l.crop,l.campaignName,l.status,l.landSize,l.language,l.requestedAt.toISOString()].map(esc).join(','))].join('\n'); res.setHeader('Content-Type', 'text/csv; charset=utf-8'); res.setHeader('Content-Disposition', `attachment; filename="krishipath-leads-${new Date().toISOString().slice(0,10)}.csv"`); res.send(`\uFEFF${csv}`); }));

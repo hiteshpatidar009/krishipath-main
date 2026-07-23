@@ -1,0 +1,12 @@
+{
+  "moduleName": "notification",
+  "routeCoverage": 12,
+  "serviceCoverage": 35,
+  "middlewareCoverage": 4,
+  "validatorCoverage": 3,
+  "workflowCoverage": 0,
+  "eventCoverage": 1,
+  "transactionCoverage": 1,
+  "observabilityCoverage": 2,
+  "concurrencyCoverage": 1
+}

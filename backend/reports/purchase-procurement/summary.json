@@ -1,0 +1,21 @@
+{
+  "moduleName": "purchase-procurement",
+  "generatedAt": "2026-07-02T06:54:27.189Z",
+  "counts": {
+    "endpoints": 34,
+    "functions": 73,
+    "records": 118,
+    "pass": 118,
+    "fail": 0,
+    "warning": 0
+  },
+  "latency": {
+    "avg": 21.392325423728682,
+    "p50": 2.230099999998856,
+    "p95": 60.01209999999992,
+    "p99": 173.14170000000013,
+    "max": 879.7873,
+    "count": 118
+  },
+  "findings": []
+}

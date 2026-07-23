@@ -1,0 +1,15 @@
+export const CacheKeys = {
+    authSession: (userId, sessionId) => `auth:session:${userId}:${sessionId}`,
+    idempotency: (userId, key) => `idempotency:${userId}:${key}`,
+    rateLimit: (scope, identifier) => `rate-limit:${scope}:${identifier}`,
+    mandiAvgPrices: (mandiId) => `mandi:${mandiId}:avg_prices`,
+    cropPrices: (productId, mandiId) => `product:${productId}:prices:${mandiId}`,
+    farmerProfile: (farmerId) => `farmer:${farmerId}:profile`,
+    marketInsight: (productId, mandiId) => `insight:${productId}:${mandiId}:active`,
+    weatherCurrent: (lat, lon) => `weather:${lat}:${lon}:current`,
+    weatherMandi: (mandiId) => `weather:${mandiId}:current`,
+    feedReels: (farmerId) => `feed:${farmerId}:reels`,
+    videoViews: (videoId) => `video:${videoId}:views`,
+    farmerPointsToday: (farmerId) => `farmer:${farmerId}:points_today`,
+    campaignBudgetRemaining: (campaignId) => `campaign:${campaignId}:budget_remaining`,
+};

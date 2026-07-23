@@ -1,0 +1,1 @@
+export { PlatformLogModule } from "./module";

@@ -1,0 +1,12 @@
+{
+  "moduleName": "role-permission",
+  "routeCoverage": 48,
+  "serviceCoverage": 85,
+  "middlewareCoverage": 16,
+  "validatorCoverage": 11,
+  "workflowCoverage": 0,
+  "eventCoverage": 1,
+  "transactionCoverage": 1,
+  "observabilityCoverage": 2,
+  "concurrencyCoverage": 1
+}

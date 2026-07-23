@@ -1,0 +1,21 @@
+{
+  "moduleName": "role-permission",
+  "generatedAt": "2026-07-02T06:54:26.328Z",
+  "counts": {
+    "endpoints": 56,
+    "functions": 84,
+    "records": 151,
+    "pass": 151,
+    "fail": 0,
+    "warning": 0
+  },
+  "latency": {
+    "avg": 18.25213245033114,
+    "p50": 3.1768000000010943,
+    "p95": 43.52169999999933,
+    "p99": 161.06770000000142,
+    "max": 762.8948,
+    "count": 151
+  },
+  "findings": []
+}

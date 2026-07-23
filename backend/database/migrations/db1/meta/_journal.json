@@ -1,0 +1,83 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1784343623363,
+      "tag": "0000_naive_newton_destine",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1784471349265,
+      "tag": "0001_productive_flatman",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1784477298715,
+      "tag": "0002_new_jetstream",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1784726400000,
+      "tag": "0003_mobile_app_integration",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1784812800000,
+      "tag": "0004_consolidate_ujjain_mandi",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1784899200000,
+      "tag": "0005_farmer_market_watchlist",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1784985600000,
+      "tag": "0006_reel_interactions",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1785072000000,
+      "tag": "0007_reward_redemption",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1785158400000,
+      "tag": "0008_creator_ownership",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1785244800000,
+      "tag": "0009_content_poll_votes",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1785331200000,
+      "tag": "0010_complete_mandi_flows",
+      "breakpoints": true
+    }
+  ]
+}

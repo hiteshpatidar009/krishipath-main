@@ -1,0 +1,21 @@
+{
+  "moduleName": "audit-log",
+  "generatedAt": "2026-07-02T06:54:25.899Z",
+  "counts": {
+    "endpoints": 6,
+    "functions": 26,
+    "records": 43,
+    "pass": 43,
+    "fail": 0,
+    "warning": 0
+  },
+  "latency": {
+    "avg": 26.139539534883518,
+    "p50": 2.984199999998964,
+    "p95": 98.42959999999948,
+    "p99": 507.9850999999999,
+    "max": 507.9850999999999,
+    "count": 43
+  },
+  "findings": []
+}

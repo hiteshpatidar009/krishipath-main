@@ -1,0 +1,12 @@
+{
+  "moduleName": "email",
+  "routeCoverage": 6,
+  "serviceCoverage": 17,
+  "middlewareCoverage": 1,
+  "validatorCoverage": 2,
+  "workflowCoverage": 0,
+  "eventCoverage": 1,
+  "transactionCoverage": 1,
+  "observabilityCoverage": 2,
+  "concurrencyCoverage": 1
+}

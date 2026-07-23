@@ -1,0 +1,31 @@
+export const swaggerSpec = {
+    openapi: '3.0.3',
+    info: { title: 'KrishiPath Company API', version: '1.0.0', description: 'Backend contract for the KrishiPath company portal.' },
+    servers: [{ url: '/api/v1' }],
+    components: {
+      securitySchemes: { bearerAuth: { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' } },
+      schemas: {
+        ApiResponse: { type: 'object', properties: { success: { type: 'boolean' }, data: {}, message: { type: 'string' } } },
+        Login: { type: 'object', required: ['email','password'], properties: { email: { type: 'string', format: 'email' }, password: { type: 'string', format: 'password' }, companyId: { type: 'string' } } },
+        Campaign: { type: 'object', required: ['name','goal','dailyBudget','targetStates'], properties: { name: { type: 'string' }, goal: { type: 'string' }, description: { type: 'string' }, dailyBudget: { type: 'number' }, targetStates: { type: 'array', items: { type: 'string' } }, targetCrops: { type: 'array', items: { type: 'string' } } } },
+      },
+    },
+    security: [{ bearerAuth: [] }],
+    paths: {
+      '/auth/login': { post: { security: [], summary: 'Log in', requestBody: { required: true, content: { 'application/json': { schema: { $ref: '#/components/schemas/Login' } } } }, responses: { '200': { description: 'Authenticated' } } } },
+      '/auth/register': { post: { security: [], summary: 'Register a company', responses: { '201': { description: 'Registration submitted' } } } },
+      '/auth/refresh': { post: { security: [], summary: 'Rotate refresh token', responses: { '200': { description: 'Tokens rotated' } } } },
+      '/auth/me': { get: { summary: 'Current user', responses: { '200': { description: 'Current user' } } } },
+      '/campaigns': { get: { summary: 'List campaigns', responses: { '200': { description: 'Campaign list' } } }, post: { summary: 'Create campaign', requestBody: { required: true, content: { 'application/json': { schema: { $ref: '#/components/schemas/Campaign' } } } }, responses: { '201': { description: 'Campaign created' } } } },
+      '/campaigns/{id}': { get: { summary: 'Get campaign', parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string' } }], responses: { '200': { description: 'Campaign' } } }, patch: { summary: 'Update campaign', responses: { '200': { description: 'Updated' } } }, delete: { summary: 'Soft-delete campaign', responses: { '204': { description: 'Deleted' } } } },
+      '/leads': { get: { summary: 'List and filter farmer leads', responses: { '200': { description: 'Lead list' } } } },
+      '/wallet/summary': { get: { summary: 'Wallet summary', responses: { '200': { description: 'Wallet summary' } } } },
+      '/wallet/topup': { post: { summary: 'Top up wallet', responses: { '201': { description: 'Top-up completed' } } } },
+      '/dashboard/kpi': { get: { summary: 'Dashboard KPIs', responses: { '200': { description: 'KPI summary' } } } },
+      '/notifications': { get: { summary: 'List notifications', responses: { '200': { description: 'Notifications' } } } },
+      '/team': { get: { summary: 'List team members', responses: { '200': { description: 'Team members' } } } },
+      '/companies': { get: { summary: 'Admin company directory', responses: { '200': { description: 'Companies' } } } },
+      '/settings/rewards': { get: { summary: 'Reward defaults', responses: { '200': { description: 'Reward settings' } } }, put: { summary: 'Save reward defaults', responses: { '200': { description: 'Saved' } } } },
+      '/settings/segments': { get: { summary: 'Audience segments', responses: { '200': { description: 'Segments' } } }, post: { summary: 'Create an audience segment', responses: { '201': { description: 'Created' } } } },
+    },
+} as const;

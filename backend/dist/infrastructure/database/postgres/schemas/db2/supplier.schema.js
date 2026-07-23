@@ -1,0 +1,1 @@
+export { suppliersTable, supplierContactsTable, supplierPriceListsTable, supplierDocumentsTable, supplierPerformanceTable, supplierNotesTable, supplierPaymentTermsTable, supplierCategoriesTable, } from "./all.schema";

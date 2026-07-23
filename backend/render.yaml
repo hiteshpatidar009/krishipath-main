@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: rsbc-backend
+    runtime: node
+    plan: free # Change to 'starter' or higher for more memory
+    buildCommand: npm ci --include=dev
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_OPTIONS
+        value: --max-old-space-size=2048
+    healthCheckPath: /health
+    autoDeploy: true

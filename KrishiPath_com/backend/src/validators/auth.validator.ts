@@ -1,0 +1,8 @@
+import { z } from 'zod';
+const password = z.string().min(8).max(72).regex(/[A-Za-z]/, 'Password must contain a letter').regex(/\d/, 'Password must contain a number');
+export const loginSchema = z.object({ body: z.object({ email: z.email(), password: z.string().min(1), companyId: z.string().optional() }), query: z.any(), params: z.any() });
+export const refreshSchema = z.object({ body: z.object({ refreshToken: z.string().min(20) }), query: z.any(), params: z.any() });
+export const registerSchema = z.object({ body: z.object({ companyName: z.string().min(2), category: z.string().min(2).optional(), businessCategory: z.string().min(2).optional(), gstNumber: z.string().optional(), gst: z.string().optional(), panNumber: z.string().optional(), website: z.string().optional(), email: z.email(), phone: z.string().min(10), contactName: z.string().min(2), address: z.string().min(5), state: z.string().min(2), city: z.string().optional(), pincode: z.string().optional(), password, initialTopUp: z.coerce.number().min(0).optional(), initialRecharge: z.coerce.number().min(0).optional() }).passthrough().refine((v) => v.category || v.businessCategory, { message: 'Business category is required' }), query: z.any(), params: z.any() });
+export const forgotSchema = z.object({ body: z.object({ email: z.email() }), query: z.any(), params: z.any() });
+export const resetSchema = z.object({ body: z.object({ token: z.string().min(20), password }), query: z.any(), params: z.any() });
+export const changePasswordSchema = z.object({ body: z.object({ currentPassword: z.string(), newPassword: password }), query: z.any(), params: z.any() });

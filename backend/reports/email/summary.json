@@ -1,0 +1,21 @@
+{
+  "moduleName": "email",
+  "generatedAt": "2026-07-02T06:54:25.739Z",
+  "counts": {
+    "endpoints": 5,
+    "functions": 16,
+    "records": 32,
+    "pass": 32,
+    "fail": 0,
+    "warning": 0
+  },
+  "latency": {
+    "avg": 28.695578124999827,
+    "p50": 5.026700000000346,
+    "p95": 162.63320000000022,
+    "p99": 386.6852999999992,
+    "max": 386.6852999999992,
+    "count": 32
+  },
+  "findings": []
+}

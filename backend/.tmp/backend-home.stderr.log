@@ -1,0 +1,105 @@
+DEBUG ERROR PRESENTER: DrizzleQueryError: Failed query: insert into "farmers" ("id", "user_id", "first_name", "last_name", "phone", "state_id", "district_id", "village", "preferred_mandi_id", "land_size_acres", "irrigation_type", "soil_type", "experience_years", "aadhaar_number", "pm_kisan_id", "kcc_number", "alternate_phone", "dob", "gender", "profile_photo_url", "profile_status", "gps_lat", "gps_lng", "gps_consent", "created_at", "updated_at") values ($1, $2, $3, $4, $5, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, $6, default, default, default, default, default)
+params: 1acdecfa-0368-4695-9bcf-9668aefd50be,930d8991-ce73-41e4-84ab-9cd14b360782,Hitesh,,8815440451,COMPLETE
+    at NodePgPreparedQuery.queryWithCache (D:\All_project\KrishiPathMain\backend\node_modules\src\pg-core\session.ts:73:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async FarmerRepository.upsertProfile (D:\All_project\KrishiPathMain\backend\src\modules\farmer\repositories\farmer.repository.ts:186:7)
+    at async FarmerService.updateProfile (D:\All_project\KrishiPathMain\backend\src\modules\farmer\services\farmer.service.ts:27:21)
+    at async updateProfile (D:\All_project\KrishiPathMain\backend\src\modules\farmer\controllers\farmer.controller.ts:27:23) {
+  query: 'insert into "farmers" ("id", "user_id", "first_name", "last_name", "phone", "state_id", "district_id", "village", "preferred_mandi_id", "land_size_acres", "irrigation_type", "soil_type", "experience_years", "aadhaar_number", "pm_kisan_id", "kcc_number", "alternate_phone", "dob", "gender", "profile_photo_url", "profile_status", "gps_lat", "gps_lng", "gps_consent", "created_at", "updated_at") values ($1, $2, $3, $4, $5, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, $6, default, default, default, default, default)',
+  params: [
+    '1acdecfa-0368-4695-9bcf-9668aefd50be',
+    '930d8991-ce73-41e4-84ab-9cd14b360782',
+    'Hitesh',
+    null,
+    '8815440451',
+    'COMPLETE'
+  ],
+  cause: error: duplicate key value violates unique constraint "farmers_phone_unique"
+      at D:\All_project\KrishiPathMain\backend\node_modules\pg-pool\index.js:45:11
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async <anonymous> (D:\All_project\KrishiPathMain\backend\node_modules\src\node-postgres\session.ts:149:14)
+      at async NodePgPreparedQuery.queryWithCache (D:\All_project\KrishiPathMain\backend\node_modules\src\pg-core\session.ts:71:12)
+      at async FarmerRepository.upsertProfile (D:\All_project\KrishiPathMain\backend\src\modules\farmer\repositories\farmer.repository.ts:186:7)
+      at async FarmerService.updateProfile (D:\All_project\KrishiPathMain\backend\src\modules\farmer\services\farmer.service.ts:27:21)
+      at async updateProfile (D:\All_project\KrishiPathMain\backend\src\modules\farmer\controllers\farmer.controller.ts:27:23) {
+    length: 214,
+    severity: 'ERROR',
+    code: '23505',
+    detail: 'Key (phone)=(8815440451) already exists.',
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: 'public',
+    table: 'farmers',
+    column: undefined,
+    dataType: undefined,
+    constraint: 'farmers_phone_unique',
+    file: 'nbtinsert.c',
+    line: '666',
+    routine: '_bt_check_unique'
+  }
+}
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+DEBUG ERROR PRESENTER: AppError: AI provider failed to generate a response
+    at GeminiGateway.chat (D:\All_project\KrishiPathMain\backend\src\modules\krishiguru\gateway\ai-gateway.ts:64:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async KrishiGuruService.chat (D:\All_project\KrishiPathMain\backend\src\modules\krishiguru\services\krishiguru.service.ts:58:29)
+    at async chat (D:\All_project\KrishiPathMain\backend\src\modules\krishiguru\controllers\krishiguru.controller.ts:39:22) {
+  statusCode: 502,
+  code: 'AI_PROVIDER_FAILED'
+}
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+DEBUG ERROR PRESENTER: AppError: Not enough KrishiPoints
+    at <anonymous> (D:\All_project\KrishiPathMain\backend\src\modules\reward\repositories\reward.repository.ts:116:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async NodePgSession.transaction (D:\All_project\KrishiPathMain\backend\node_modules\src\node-postgres\session.ts:259:19)
+    at async redeem (D:\All_project\KrishiPathMain\backend\src\modules\reward\controllers\reward.controller.ts:62:20) {
+  statusCode: 409,
+  code: 'INSUFFICIENT_KRISHIPOINTS'
+}
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231

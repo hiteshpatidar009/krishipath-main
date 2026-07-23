@@ -1,0 +1,21 @@
+{
+  "moduleName": "document",
+  "generatedAt": "2026-07-02T06:54:24.260Z",
+  "counts": {
+    "endpoints": 7,
+    "functions": 24,
+    "records": 42,
+    "pass": 42,
+    "fail": 0,
+    "warning": 0
+  },
+  "latency": {
+    "avg": 23.74088571428577,
+    "p50": 4.5129999999990105,
+    "p95": 82.94210000000021,
+    "p99": 400.0472000000009,
+    "max": 400.0472000000009,
+    "count": 42
+  },
+  "findings": []
+}

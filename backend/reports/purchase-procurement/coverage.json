@@ -1,0 +1,12 @@
+{
+  "moduleName": "purchase-procurement",
+  "routeCoverage": 30,
+  "serviceCoverage": 74,
+  "middlewareCoverage": 10,
+  "validatorCoverage": 7,
+  "workflowCoverage": 0,
+  "eventCoverage": 1,
+  "transactionCoverage": 1,
+  "observabilityCoverage": 2,
+  "concurrencyCoverage": 1
+}

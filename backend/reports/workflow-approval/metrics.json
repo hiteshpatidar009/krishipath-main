@@ -1,0 +1,21 @@
+{
+  "moduleName": "workflow-approval",
+  "generatedAt": "2026-07-02T06:54:24.344Z",
+  "counts": {
+    "endpoints": 44,
+    "functions": 71,
+    "records": 126,
+    "pass": 126,
+    "fail": 0,
+    "warning": 0
+  },
+  "latency": {
+    "avg": 14.543300793650713,
+    "p50": 2.0663000000004104,
+    "p95": 35.92330000000038,
+    "p99": 174.45820000000094,
+    "max": 732.7103999999999,
+    "count": 126
+  },
+  "findings": []
+}

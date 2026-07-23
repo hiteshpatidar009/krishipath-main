@@ -1,0 +1,18 @@
+import { Router } from 'express';
+import mongoose from 'mongoose';
+import { z } from 'zod';
+import { Company } from '../models/company.model.js';
+import { Transaction } from '../models/wallet.model.js';
+import { authorize } from '../middleware/auth.js';
+import { validate } from '../middleware/validate.js';
+import { asyncHandler } from '../shared/async-handler.js';
+import { AppError } from '../shared/errors.js';
+import { publicId } from '../shared/id.js';
+import { ok } from '../shared/response.js';
+
+export const walletRouter = Router();
+const view = (t: Record<string, unknown>) => ({ id: t.publicId, type: t.type, amount: t.amount, description: t.description, date: t.createdAt, balance: t.balance, invoiceId: t.invoiceId });
+walletRouter.get('/summary', asyncHandler(async (req, res) => { const c = await Company.findById(req.user!.company).lean(); if (!c) throw new AppError(404, 'Company not found'); ok(res, { balance: c.walletBalance, totalRecharged: c.totalRecharged, totalSpent: c.totalSpent, platformFees: c.platformFees, lastUpdated: c.updatedAt, accountId: c.companyId, companyName: c.name }); }));
+walletRouter.get('/transactions', asyncHandler(async (req, res) => { const page = Math.max(1, Number(req.query.page) || 1), limit = Math.min(100, Math.max(1, Number(req.query.limit) || 20)); const filter: Record<string, unknown> = { company: req.user!.company }; if (req.query.type && req.query.type !== 'all') filter.type = req.query.type; const [rows, total] = await Promise.all([Transaction.find(filter).sort({ createdAt: -1 }).skip((page - 1) * limit).limit(limit).lean(), Transaction.countDocuments(filter)]); ok(res, rows.map((t) => view(t as unknown as Record<string, unknown>)), undefined, 200, { total, page, limit }); }));
+walletRouter.post('/topup', authorize('wallet_topup'), validate(z.object({ body: z.object({ amount: z.coerce.number().min(100).max(10_000_000), paymentMethod: z.enum(['upi', 'netbanking', 'card']), gatewayReference: z.string().optional() }), query: z.any(), params: z.any() })), asyncHandler(async (req, res) => { const session = await mongoose.startSession(); let transaction: unknown; try { await session.withTransaction(async () => { const company = await Company.findById(req.user!.company).session(session); if (!company) throw new AppError(404, 'Company not found'); company.walletBalance += req.body.amount; company.totalRecharged += req.body.amount; await company.save({ session }); const invoiceId = `INV-${new Date().getFullYear()}-${Date.now().toString().slice(-8)}`; const [row] = await Transaction.create([{ publicId: publicId('txn'), company: company._id, type: 'recharge', amount: req.body.amount, description: `Wallet Recharge via ${req.body.paymentMethod.toUpperCase()}`, balance: company.walletBalance, invoiceId, paymentMethod: req.body.paymentMethod, gatewayReference: req.body.gatewayReference, createdBy: req.user!._id }], { session }); transaction = view(row!.toObject()); }); } finally { await session.endSession(); } ok(res, transaction, 'Wallet recharged', 201); }));
+walletRouter.get('/statement', asyncHandler(async (req, res) => { const rows = await Transaction.find({ company: req.user!.company }).sort({ createdAt: -1 }).lean(); const esc = (v: unknown) => `"${String(v ?? '').replaceAll('"', '""')}"`; const csv = [['ID','Type','Amount','Description','Date','Balance'], ...rows.map((t) => [t.publicId,t.type,t.amount,t.description,t.createdAt.toISOString(),t.balance])].map((r) => r.map(esc).join(',')).join('\n'); res.type('text/csv').attachment(`krishipath-statement-${new Date().toISOString().slice(0,10)}.csv`).send(`\uFEFF${csv}`); }));

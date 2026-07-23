@@ -1,0 +1,12 @@
+{
+  "moduleName": "warehouse",
+  "routeCoverage": 382,
+  "serviceCoverage": 487,
+  "middlewareCoverage": 137,
+  "validatorCoverage": 82,
+  "workflowCoverage": 0,
+  "eventCoverage": 1,
+  "transactionCoverage": 1,
+  "observabilityCoverage": 2,
+  "concurrencyCoverage": 1
+}

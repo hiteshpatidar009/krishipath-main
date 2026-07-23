@@ -1,0 +1,21 @@
+{
+  "moduleName": "sms",
+  "generatedAt": "2026-07-02T06:54:28.878Z",
+  "counts": {
+    "endpoints": 5,
+    "functions": 18,
+    "records": 34,
+    "pass": 34,
+    "fail": 0,
+    "warning": 0
+  },
+  "latency": {
+    "avg": 9.279244117647094,
+    "p50": 0.7075999999997293,
+    "p95": 68.88810000000012,
+    "p99": 103.4964,
+    "max": 103.4964,
+    "count": 34
+  },
+  "findings": []
+}

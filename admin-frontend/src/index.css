@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-krishi-50: #f0fdf4;
+  --color-krishi-100: #dcfce7;
+  --color-krishi-200: #bbf7d0;
+  --color-krishi-300: #86efac;
+  --color-krishi-400: #4ade80;
+  --color-krishi-500: #22c55e;
+  --color-krishi-600: #16a34a;
+  --color-krishi-700: #15803d;
+  --color-krishi-800: #166534;
+  --color-krishi-900: #14532d;
+  --color-krishi-950: #052e16;
+
+  --color-accent-50: #fffbeb;
+  --color-accent-100: #fef3c7;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  
+  --shadow-krishi: 0 4px 14px 0 rgba(34, 197, 94, 0.15);
+}
+
+@layer base {
+  :root {
+    --background: #f8fafc;
+    --foreground: #0f172a;
+    --card: #ffffff;
+    --card-foreground: #0f172a;
+    --border: #e2e8f0;
+  }
+  
+  .dark {
+    --background: #020617;
+    --foreground: #f8fafc;
+    --card: #0f172a;
+    --card-foreground: #f8fafc;
+    --border: #1e293b;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+}

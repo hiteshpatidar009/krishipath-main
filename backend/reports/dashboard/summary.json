@@ -1,0 +1,21 @@
+{
+  "moduleName": "dashboard",
+  "generatedAt": "2026-07-02T06:54:24.017Z",
+  "counts": {
+    "endpoints": 2,
+    "functions": 26,
+    "records": 39,
+    "pass": 39,
+    "fail": 0,
+    "warning": 0
+  },
+  "latency": {
+    "avg": 14.601182051281938,
+    "p50": 0.7201000000004569,
+    "p95": 97.31730000000061,
+    "p99": 259.5498000000007,
+    "max": 259.5498000000007,
+    "count": 39
+  },
+  "findings": []
+}

@@ -1,0 +1,2 @@
+[33m[SERVER][0m Server startup failed: listen EADDRINUSE: address already in use :::59231
+[95m[BOOTSTRAP][0m Application bootstrap failed: listen EADDRINUSE: address already in use :::59231

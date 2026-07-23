@@ -1,0 +1,21 @@
+{
+  "moduleName": "file-storage",
+  "generatedAt": "2026-07-02T06:54:25.502Z",
+  "counts": {
+    "endpoints": 5,
+    "functions": 18,
+    "records": 34,
+    "pass": 34,
+    "fail": 0,
+    "warning": 0
+  },
+  "latency": {
+    "avg": 23.489102941176444,
+    "p50": 3.2223999999987427,
+    "p95": 175.53950000000077,
+    "p99": 286.54010000000017,
+    "max": 286.54010000000017,
+    "count": 34
+  },
+  "findings": []
+}

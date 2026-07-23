@@ -1,0 +1,21 @@
+{
+  "moduleName": "warehouse",
+  "generatedAt": "2026-07-02T06:54:42.171Z",
+  "counts": {
+    "endpoints": 461,
+    "functions": 486,
+    "records": 958,
+    "pass": 958,
+    "fail": 0,
+    "warning": 0
+  },
+  "latency": {
+    "avg": 4.924868893528144,
+    "p50": 2.2272999999986496,
+    "p95": 10.72899999999936,
+    "p99": 12.003399999997782,
+    "max": 125.81979999999749,
+    "count": 958
+  },
+  "findings": []
+}

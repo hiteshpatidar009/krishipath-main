@@ -1,0 +1,1759 @@
+[
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "architecture",
+    "testScenario": "module boundary files",
+    "expectedResult": "module.ts and index.ts exist",
+    "actualResult": "boundaries-present",
+    "responseTimeMs": 4.461100000000442,
+    "retryCount": 0,
+    "executionDurationMs": 4.461100000000442,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 4.461100000000442
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "architecture",
+    "testScenario": "placeholder export scan",
+    "expectedResult": "no export {}; placeholders",
+    "actualResult": "no-placeholders",
+    "responseTimeMs": 53.48899999999958,
+    "retryCount": 0,
+    "executionDurationMs": 53.48899999999958,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 28.97505000000001
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "architecture",
+    "testScenario": "layer artifact scan",
+    "expectedResult": "routes/controllers/services/domain discoverable",
+    "actualResult": "layers-discovered",
+    "responseTimeMs": 53.08730000000105,
+    "retryCount": 0,
+    "executionDurationMs": 53.08730000000105,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 37.012466666667024
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "security",
+    "testScenario": "route guard source scan",
+    "expectedResult": "auth/authorization guards present",
+    "actualResult": "routes=10",
+    "responseTimeMs": 46.45769999999902,
+    "retryCount": 0,
+    "executionDurationMs": 46.45769999999902,
+    "passFailStatus": "pass",
+    "securityNotes": "source guard enforcement inspected",
+    "averageLatencyMs": 39.37377500000002
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/suppliers",
+    "method": "POST",
+    "testCategory": "middleware",
+    "testScenario": "blocks unauthenticated access",
+    "payload": {},
+    "expectedResult": "401/403/400/404 or public status",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Unauthorized"
+    },
+    "responseTimeMs": 173.14170000000013,
+    "retryCount": 0,
+    "executionDurationMs": 173.14170000000013,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 66.12736000000004
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/suppliers",
+    "method": "POST",
+    "testCategory": "validation",
+    "testScenario": "rejects malformed payload",
+    "payload": {
+      "invalid": true
+    },
+    "expectedResult": "validation or auth rejection",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 26.721299999999246,
+    "retryCount": 0,
+    "executionDurationMs": 26.721299999999246,
+    "passFailStatus": "pass",
+    "validationNotes": "malformed payload sent through route stack",
+    "averageLatencyMs": 59.55968333333325
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/suppliers",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks SQL injection payload",
+    "payload": {
+      "name": "'; DROP TABLE users; --"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 29.042999999999665,
+    "retryCount": 0,
+    "executionDurationMs": 29.042999999999665,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 55.200157142857016
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/suppliers",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks XSS payload",
+    "payload": {
+      "html": "<script>alert(1)</script>"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 26.16649999999936,
+    "retryCount": 0,
+    "executionDurationMs": 26.16649999999936,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 51.57094999999981
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/suppliers",
+    "method": "POST",
+    "testCategory": "performance",
+    "testScenario": "records oversized payload behavior",
+    "payload": {
+      "data": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "expectedResult": "bounded response without crash",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 30.49239999999918,
+    "retryCount": 0,
+    "executionDurationMs": 30.49239999999918,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 49.22888888888863
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders",
+    "method": "POST",
+    "testCategory": "middleware",
+    "testScenario": "blocks unauthenticated access",
+    "payload": {},
+    "expectedResult": "401/403/400/404 or public status",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Unauthorized"
+    },
+    "responseTimeMs": 24.54360000000088,
+    "retryCount": 0,
+    "executionDurationMs": 24.54360000000088,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 46.76035999999986
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders",
+    "method": "POST",
+    "testCategory": "validation",
+    "testScenario": "rejects malformed payload",
+    "payload": {
+      "invalid": true
+    },
+    "expectedResult": "validation or auth rejection",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 24.366500000000087,
+    "retryCount": 0,
+    "executionDurationMs": 24.366500000000087,
+    "passFailStatus": "pass",
+    "validationNotes": "malformed payload sent through route stack",
+    "averageLatencyMs": 44.724554545454424
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks SQL injection payload",
+    "payload": {
+      "name": "'; DROP TABLE users; --"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 22.41820000000007,
+    "retryCount": 0,
+    "executionDurationMs": 22.41820000000007,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 42.86569166666656
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks XSS payload",
+    "payload": {
+      "html": "<script>alert(1)</script>"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 25.541199999999662,
+    "retryCount": 0,
+    "executionDurationMs": 25.541199999999662,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 41.53303846153834
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders",
+    "method": "POST",
+    "testCategory": "performance",
+    "testScenario": "records oversized payload behavior",
+    "payload": {
+      "data": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "expectedResult": "bounded response without crash",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 24.582800000000134,
+    "retryCount": 0,
+    "executionDurationMs": 24.582800000000134,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 40.322307142857035
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders",
+    "method": "GET",
+    "testCategory": "middleware",
+    "testScenario": "blocks unauthenticated access",
+    "payload": {},
+    "expectedResult": "401/403/400/404 or public status",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Unauthorized"
+    },
+    "responseTimeMs": 16.487499999999272,
+    "retryCount": 0,
+    "executionDurationMs": 16.487499999999272,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 38.73331999999985
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders/:purchaseOrderId",
+    "method": "GET",
+    "testCategory": "middleware",
+    "testScenario": "blocks unauthenticated access",
+    "payload": {},
+    "expectedResult": "401/403/400/404 or public status",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Unauthorized"
+    },
+    "responseTimeMs": 17.492199999998775,
+    "retryCount": 0,
+    "executionDurationMs": 17.492199999998775,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 37.405749999999784
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders/:purchaseOrderId/approve",
+    "method": "POST",
+    "testCategory": "middleware",
+    "testScenario": "blocks unauthenticated access",
+    "payload": {},
+    "expectedResult": "401/403/400/404 or public status",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Unauthorized"
+    },
+    "responseTimeMs": 24.080200000000332,
+    "retryCount": 0,
+    "executionDurationMs": 24.080200000000332,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 36.621894117646875
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders/:purchaseOrderId/approve",
+    "method": "POST",
+    "testCategory": "validation",
+    "testScenario": "rejects malformed payload",
+    "payload": {
+      "invalid": true
+    },
+    "expectedResult": "validation or auth rejection",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 29.955799999999726,
+    "retryCount": 0,
+    "executionDurationMs": 29.955799999999726,
+    "passFailStatus": "pass",
+    "validationNotes": "malformed payload sent through route stack",
+    "averageLatencyMs": 36.25155555555537
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders/:purchaseOrderId/approve",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks SQL injection payload",
+    "payload": {
+      "name": "'; DROP TABLE users; --"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 19.81500000000051,
+    "retryCount": 0,
+    "executionDurationMs": 19.81500000000051,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 35.38647368421037
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders/:purchaseOrderId/approve",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks XSS payload",
+    "payload": {
+      "html": "<script>alert(1)</script>"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 24.423000000000684,
+    "retryCount": 0,
+    "executionDurationMs": 24.423000000000684,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 34.83829999999989
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders/:purchaseOrderId/approve",
+    "method": "POST",
+    "testCategory": "performance",
+    "testScenario": "records oversized payload behavior",
+    "payload": {
+      "data": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "expectedResult": "bounded response without crash",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 17.96520000000055,
+    "retryCount": 0,
+    "executionDurationMs": 17.96520000000055,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 34.03481904761897
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders/:purchaseOrderId/reject",
+    "method": "POST",
+    "testCategory": "middleware",
+    "testScenario": "blocks unauthenticated access",
+    "payload": {},
+    "expectedResult": "401/403/400/404 or public status",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Unauthorized"
+    },
+    "responseTimeMs": 16.71509999999944,
+    "retryCount": 0,
+    "executionDurationMs": 16.71509999999944,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 33.24755909090899
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders/:purchaseOrderId/reject",
+    "method": "POST",
+    "testCategory": "validation",
+    "testScenario": "rejects malformed payload",
+    "payload": {
+      "invalid": true
+    },
+    "expectedResult": "validation or auth rejection",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 22.55029999999897,
+    "retryCount": 0,
+    "executionDurationMs": 22.55029999999897,
+    "passFailStatus": "pass",
+    "validationNotes": "malformed payload sent through route stack",
+    "averageLatencyMs": 32.78246086956508
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders/:purchaseOrderId/reject",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks SQL injection payload",
+    "payload": {
+      "name": "'; DROP TABLE users; --"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 27.008899999998903,
+    "retryCount": 0,
+    "executionDurationMs": 27.008899999998903,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 32.54189583333315
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders/:purchaseOrderId/reject",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks XSS payload",
+    "payload": {
+      "html": "<script>alert(1)</script>"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 15.785299999999552,
+    "retryCount": 0,
+    "executionDurationMs": 15.785299999999552,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 31.87163199999981
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders/:purchaseOrderId/reject",
+    "method": "POST",
+    "testCategory": "performance",
+    "testScenario": "records oversized payload behavior",
+    "payload": {
+      "data": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "expectedResult": "bounded response without crash",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 24.65430000000015,
+    "retryCount": 0,
+    "executionDurationMs": 24.65430000000015,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 31.594042307692128
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders/:purchaseOrderId/cancel",
+    "method": "POST",
+    "testCategory": "middleware",
+    "testScenario": "blocks unauthenticated access",
+    "payload": {},
+    "expectedResult": "401/403/400/404 or public status",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Unauthorized"
+    },
+    "responseTimeMs": 21.317000000000917,
+    "retryCount": 0,
+    "executionDurationMs": 21.317000000000917,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 31.21341111111097
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders/:purchaseOrderId/cancel",
+    "method": "POST",
+    "testCategory": "validation",
+    "testScenario": "rejects malformed payload",
+    "payload": {
+      "invalid": true
+    },
+    "expectedResult": "validation or auth rejection",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 55.74199999999837,
+    "retryCount": 0,
+    "executionDurationMs": 55.74199999999837,
+    "passFailStatus": "pass",
+    "validationNotes": "malformed payload sent through route stack",
+    "averageLatencyMs": 32.08943214285695
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders/:purchaseOrderId/cancel",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks SQL injection payload",
+    "payload": {
+      "name": "'; DROP TABLE users; --"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 28.483099999999467,
+    "retryCount": 0,
+    "executionDurationMs": 28.483099999999467,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 31.965075862068762
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders/:purchaseOrderId/cancel",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks XSS payload",
+    "payload": {
+      "html": "<script>alert(1)</script>"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 58.37289999999848,
+    "retryCount": 0,
+    "executionDurationMs": 58.37289999999848,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 32.84533666666642
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders/:purchaseOrderId/cancel",
+    "method": "POST",
+    "testCategory": "performance",
+    "testScenario": "records oversized payload behavior",
+    "payload": {
+      "data": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "expectedResult": "bounded response without crash",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 16.08510000000024,
+    "retryCount": 0,
+    "executionDurationMs": 16.08510000000024,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 32.30468387096751
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders/:purchaseOrderId/receive",
+    "method": "POST",
+    "testCategory": "middleware",
+    "testScenario": "blocks unauthenticated access",
+    "payload": {},
+    "expectedResult": "401/403/400/404 or public status",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Unauthorized"
+    },
+    "responseTimeMs": 17.271099999999933,
+    "retryCount": 0,
+    "executionDurationMs": 17.271099999999933,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 31.834884374999774
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders/:purchaseOrderId/receive",
+    "method": "POST",
+    "testCategory": "validation",
+    "testScenario": "rejects malformed payload",
+    "payload": {
+      "invalid": true
+    },
+    "expectedResult": "validation or auth rejection",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 45.794700000000375,
+    "retryCount": 0,
+    "executionDurationMs": 45.794700000000375,
+    "passFailStatus": "pass",
+    "validationNotes": "malformed payload sent through route stack",
+    "averageLatencyMs": 32.25790909090888
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders/:purchaseOrderId/receive",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks SQL injection payload",
+    "payload": {
+      "name": "'; DROP TABLE users; --"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 58.33359999999993,
+    "retryCount": 0,
+    "executionDurationMs": 58.33359999999993,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 33.02484117647038
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders/:purchaseOrderId/receive",
+    "method": "POST",
+    "testCategory": "security",
+    "testScenario": "blocks XSS payload",
+    "payload": {
+      "html": "<script>alert(1)</script>"
+    },
+    "expectedResult": "payload blocked before mutation",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 22.072900000001027,
+    "retryCount": 0,
+    "executionDurationMs": 22.072900000001027,
+    "passFailStatus": "pass",
+    "securityNotes": "malicious payload sent through route stack",
+    "averageLatencyMs": 32.7119285714284
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/purchase-orders/:purchaseOrderId/receive",
+    "method": "POST",
+    "testCategory": "performance",
+    "testScenario": "records oversized payload behavior",
+    "payload": {
+      "data": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "expectedResult": "bounded response without crash",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Invalid token"
+    },
+    "responseTimeMs": 26.31000000000131,
+    "retryCount": 0,
+    "executionDurationMs": 26.31000000000131,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 32.534097222222094
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/goods-receipts",
+    "method": "GET",
+    "testCategory": "middleware",
+    "testScenario": "blocks unauthenticated access",
+    "payload": {},
+    "expectedResult": "401/403/400/404 or public status",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Unauthorized"
+    },
+    "responseTimeMs": 28.27520000000004,
+    "retryCount": 0,
+    "executionDurationMs": 28.27520000000004,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 32.41899189189177
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "endpoint": "/goods-receipts/:goodsReceiptId",
+    "method": "GET",
+    "testCategory": "middleware",
+    "testScenario": "blocks unauthenticated access",
+    "payload": {},
+    "expectedResult": "401/403/400/404 or public status",
+    "actualResult": "blocked",
+    "responseStatus": 401,
+    "responseBody": {
+      "success": false,
+      "message": "Unauthorized"
+    },
+    "responseTimeMs": 12.426299999999173,
+    "retryCount": 0,
+    "executionDurationMs": 12.426299999999173,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 31.89286842105249
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "validation",
+    "testScenario": "validation source scan",
+    "expectedResult": "validators or parsers present",
+    "actualResult": "validation-ready",
+    "responseTimeMs": 85.5635999999995,
+    "retryCount": 0,
+    "executionDurationMs": 85.5635999999995,
+    "passFailStatus": "pass",
+    "validationNotes": "validator/parsing source located",
+    "averageLatencyMs": 33.269041025640874
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "observability",
+    "testScenario": "observability source scan",
+    "expectedResult": "logging/events/context responses present",
+    "actualResult": "observability-ready",
+    "responseTimeMs": 60.01209999999992,
+    "retryCount": 0,
+    "executionDurationMs": 60.01209999999992,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 33.93761749999985
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "event",
+    "testScenario": "event and workflow readiness scan",
+    "expectedResult": "events or explicit no-op flows located",
+    "actualResult": "event-workflow-ready",
+    "responseTimeMs": 36.47489999999925,
+    "retryCount": 0,
+    "executionDurationMs": 36.47489999999925,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 33.999502439024226
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "transaction",
+    "testScenario": "transaction and rollback readiness scan",
+    "expectedResult": "transaction/rollback/idempotency/repository boundary present",
+    "actualResult": "transaction-readiness-inspected",
+    "responseTimeMs": 66.21059999999852,
+    "retryCount": 0,
+    "executionDurationMs": 66.21059999999852,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 34.76643333333314
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "module construction",
+    "expectedResult": "module constructs and router exists",
+    "actualResult": "constructed",
+    "responseTimeMs": 3.4149000000015803,
+    "retryCount": 0,
+    "executionDurationMs": 3.4149000000015803,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 34.03732790697659
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class CreateSupplierUseCase",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 5.711599999998725,
+    "retryCount": 0,
+    "executionDurationMs": 5.711599999998725,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 33.39356136363619
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class CreatePurchaseOrderUseCase",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.5208999999995285,
+    "retryCount": 0,
+    "executionDurationMs": 0.5208999999995285,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 32.663057777777595
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class ListPurchaseOrdersUseCase",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 4.318600000000515,
+    "retryCount": 0,
+    "executionDurationMs": 4.318600000000515,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 32.04687391304331
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class GetPurchaseOrderUseCase",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.40380000000004657,
+    "retryCount": 0,
+    "executionDurationMs": 0.40380000000004657,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 31.37361702127643
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class ApprovePurchaseOrderUseCase",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.9855000000006839,
+    "retryCount": 0,
+    "executionDurationMs": 0.9855000000006839,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 30.74053124999985
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class RejectPurchaseOrderUseCase",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 2.230099999998856,
+    "retryCount": 0,
+    "executionDurationMs": 2.230099999998856,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 30.158685714285546
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class CancelPurchaseOrderUseCase",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.6018999999996595,
+    "retryCount": 0,
+    "executionDurationMs": 0.6018999999996595,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 29.567549999999827
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class ReceivePurchaseOrderUseCase",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4393000000000029,
+    "retryCount": 0,
+    "executionDurationMs": 0.4393000000000029,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 28.996407843137085
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class ListGoodsReceiptsUseCase",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4164999999993597,
+    "retryCount": 0,
+    "executionDurationMs": 0.4164999999993597,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 28.446794230769054
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class GetGoodsReceiptUseCase",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.561600000000908,
+    "retryCount": 0,
+    "executionDurationMs": 0.561600000000908,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 27.92065849056588
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method execute",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.7106999999996333,
+    "retryCount": 0,
+    "executionDurationMs": 0.7106999999996333,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 27.41677037037021
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method execute",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 9.274699999999939,
+    "retryCount": 0,
+    "executionDurationMs": 9.274699999999939,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 27.086914545454388
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method execute",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 1.736399999999776,
+    "retryCount": 0,
+    "executionDurationMs": 1.736399999999776,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 26.634226785714127
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method execute",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.6607999999996537,
+    "retryCount": 0,
+    "executionDurationMs": 0.6607999999996537,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 26.178552631578786
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method execute",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.5706000000009226,
+    "retryCount": 0,
+    "executionDurationMs": 0.5706000000009226,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 25.737036206896406
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method requirePo",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.46419999999852735,
+    "retryCount": 0,
+    "executionDurationMs": 0.46419999999852735,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 25.30868305084729
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method execute",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.41489999999976135,
+    "retryCount": 0,
+    "executionDurationMs": 0.41489999999976135,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 24.893786666666497
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method execute",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 2.550699999999779,
+    "retryCount": 0,
+    "executionDurationMs": 2.550699999999779,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 24.52750655737688
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method execute",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.44950000000062573,
+    "retryCount": 0,
+    "executionDurationMs": 0.44950000000062573,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 24.13915161290307
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method execute",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.8603000000002794,
+    "retryCount": 0,
+    "executionDurationMs": 0.8603000000002794,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 23.769646031745882
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method execute",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.8120999999991909,
+    "retryCount": 0,
+    "executionDurationMs": 0.8120999999991909,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 23.41093437499984
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class PurchaseProcurementContractAdapter",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4771999999993568,
+    "retryCount": 0,
+    "executionDurationMs": 0.4771999999993568,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 23.058107692307527
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method getPurchaseOrder",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.38099999999940337,
+    "retryCount": 0,
+    "executionDurationMs": 0.38099999999940337,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 22.714515151514977
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class PurchaseOrderAggregate",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 4.774799999999232,
+    "retryCount": 0,
+    "executionDurationMs": 4.774799999999232,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 22.446758208955043
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method constructor",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.6431000000011409,
+    "retryCount": 0,
+    "executionDurationMs": 0.6431000000011409,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 22.126116176470426
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class SupplierAggregate",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4055000000007567,
+    "retryCount": 0,
+    "executionDurationMs": 0.4055000000007567,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 21.81132463768101
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method constructor",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3665999999993801,
+    "retryCount": 0,
+    "executionDurationMs": 0.3665999999993801,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 21.50497142857127
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class ProcurementIntegrityPolicy",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4647000000004482,
+    "retryCount": 0,
+    "executionDurationMs": 0.4647000000004482,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 21.20862957746464
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method ensureTransition",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.6332000000002154,
+    "retryCount": 0,
+    "executionDurationMs": 0.6332000000002154,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 20.92285972222208
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method isSuspiciousAmount",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.41090000000076543,
+    "retryCount": 0,
+    "executionDurationMs": 0.41090000000076543,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 20.64187397260261
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class PostgresPurchaseProcurementRepository",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.5193999999992229,
+    "retryCount": 0,
+    "executionDurationMs": 0.5193999999992229,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 20.36994864864851
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method createSupplier",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.801499999999578,
+    "retryCount": 0,
+    "executionDurationMs": 0.801499999999578,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 20.109035999999858
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method createPurchaseOrder",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 1.1203999999997905,
+    "retryCount": 0,
+    "executionDurationMs": 1.1203999999997905,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 19.859185526315645
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method findPurchaseOrderByNumber",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4408999999996013,
+    "retryCount": 0,
+    "executionDurationMs": 0.4408999999996013,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 19.606999999999854
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method listPurchaseOrders",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4408999999996013,
+    "retryCount": 0,
+    "executionDurationMs": 0.4408999999996013,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 19.361280769230618
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method findPurchaseOrder",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.6250999999992928,
+    "retryCount": 0,
+    "executionDurationMs": 0.6250999999992928,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 19.124113924050476
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method updatePurchaseOrderStatus",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.617500000000291,
+    "retryCount": 0,
+    "executionDurationMs": 0.617500000000291,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 18.89278124999985
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method listPurchaseOrderItems",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 1.7453999999997905,
+    "retryCount": 0,
+    "executionDurationMs": 1.7453999999997905,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 18.681085185185033
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method receivePurchaseOrder",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.549300000000585,
+    "retryCount": 0,
+    "executionDurationMs": 0.549300000000585,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 18.459965853658392
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method listGoodsReceipts",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 2.8294000000005326,
+    "retryCount": 0,
+    "executionDurationMs": 2.8294000000005326,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 18.271645783132396
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method findGoodsReceipt",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.45980000000054133,
+    "retryCount": 0,
+    "executionDurationMs": 0.45980000000054133,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 18.05959999999987
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method attachReceiptItems",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.43809999999939464,
+    "retryCount": 0,
+    "executionDurationMs": 0.43809999999939464,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 17.852288235293983
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method isForeignKeyError",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.47040000000015425,
+    "retryCount": 0,
+    "executionDurationMs": 0.47040000000015425,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 17.650173255813822
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class PurchaseProcurementModule",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.7227999999995518,
+    "retryCount": 0,
+    "executionDurationMs": 0.7227999999995518,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 17.455605747126302
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method getRouter",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 4.209800000000541,
+    "retryCount": 0,
+    "executionDurationMs": 4.209800000000541,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 17.305085227272603
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method getContract",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.9974999999994907,
+    "retryCount": 0,
+    "executionDurationMs": 0.9974999999994907,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 17.12185393258414
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class ProcurementOrchestrator",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 2.934499999999389,
+    "retryCount": 0,
+    "executionDurationMs": 2.934499999999389,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 16.96421666666653
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method detectApprovalRequired",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4261999999998807,
+    "retryCount": 0,
+    "executionDurationMs": 0.4261999999998807,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 16.782480219780084
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method detectLandedCostReadiness",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.41420000000107393,
+    "retryCount": 0,
+    "executionDurationMs": 0.41420000000107393,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 16.60456413043466
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class PurchaseProcurementController",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 3.7163000000000466,
+    "retryCount": 0,
+    "executionDurationMs": 3.7163000000000466,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 16.46598064516117
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method createSupplier",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.5147999999990134,
+    "retryCount": 0,
+    "executionDurationMs": 0.5147999999990134,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 16.296287234042424
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method createPurchaseOrder",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.47180000000116706,
+    "retryCount": 0,
+    "executionDurationMs": 0.47180000000116706,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 16.12971368421041
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method listPurchaseOrders",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3720999999986816,
+    "retryCount": 0,
+    "executionDurationMs": 0.3720999999986816,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 15.965571874999872
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method getPurchaseOrder",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.37000000000080036,
+    "retryCount": 0,
+    "executionDurationMs": 0.37000000000080036,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 15.804792783505036
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method approvePurchaseOrder",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 3.5645000000004075,
+    "retryCount": 0,
+    "executionDurationMs": 3.5645000000004075,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 15.67989183673458
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method rejectPurchaseOrder",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4138999999995576,
+    "retryCount": 0,
+    "executionDurationMs": 0.4138999999995576,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 15.525689898989782
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method cancelPurchaseOrder",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.7385999999987689,
+    "retryCount": 0,
+    "executionDurationMs": 0.7385999999987689,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 15.377818999999873
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method receivePurchaseOrder",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.47269999999844003,
+    "retryCount": 0,
+    "executionDurationMs": 0.47269999999844003,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 15.230243564356293
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method listGoodsReceipts",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.5465999999996711,
+    "retryCount": 0,
+    "executionDurationMs": 0.5465999999996711,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 15.08628627450966
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method getGoodsReceipt",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 4.246000000001004,
+    "retryCount": 0,
+    "executionDurationMs": 4.246000000001004,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 14.981040776698896
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class ProcurementAuthMiddleware",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.5054000000000087,
+    "retryCount": 0,
+    "executionDurationMs": 0.5054000000000087,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 14.841851923076792
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class ProcurementScopeMiddleware",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.48110000000087894,
+    "retryCount": 0,
+    "executionDurationMs": 0.48110000000087894,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 14.705082857142735
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class SupplierAccessMiddleware",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3485000000000582,
+    "retryCount": 0,
+    "executionDurationMs": 0.3485000000000582,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 14.569643396226295
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class ApprovalValidationMiddleware",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.40089999999872816,
+    "retryCount": 0,
+    "executionDurationMs": 0.40089999999872816,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 14.437225233644728
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class ProcurementAuditMiddleware",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3478999999988446,
+    "retryCount": 0,
+    "executionDurationMs": 0.3478999999988446,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 14.306768518518378
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class RequestIntegrityMiddleware",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.33650000000125146,
+    "retryCount": 0,
+    "executionDurationMs": 0.33650000000125146,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 14.178600917431066
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class ConcurrencyMiddleware",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4684999999990396,
+    "retryCount": 0,
+    "executionDurationMs": 0.4684999999990396,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 14.053963636363502
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class AntiDuplicationMiddleware",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.570400000000518,
+    "retryCount": 0,
+    "executionDurationMs": 0.570400000000518,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 13.932490090089962
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class TransactionBoundaryMiddleware",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.35429999999905704,
+    "retryCount": 0,
+    "executionDurationMs": 0.35429999999905704,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 13.811256249999863
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class PurchaseProcurementRoutes",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.3592000000007829,
+    "retryCount": 0,
+    "executionDurationMs": 0.3592000000007829,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 13.69221150442465
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method getRouter",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 3.343399999999747,
+    "retryCount": 0,
+    "executionDurationMs": 3.343399999999747,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 13.601432456140222
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "method register",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 0.4250999999985652,
+    "retryCount": 0,
+    "executionDurationMs": 0.4250999999985652,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 13.486855652173773
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "unit",
+    "testScenario": "class PurchaseProcurementValidator",
+    "expectedResult": "function source exists and is inventoried",
+    "actualResult": "inventoried",
+    "responseTimeMs": 2.5244000000002416,
+    "retryCount": 0,
+    "executionDurationMs": 2.5244000000002416,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 13.392351724137793
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "concurrency",
+    "testScenario": "parallel metadata scan",
+    "expectedResult": "all concurrent scans return same count",
+    "actualResult": "consistent-count=22",
+    "responseTimeMs": 879.7873,
+    "retryCount": 0,
+    "executionDurationMs": 879.7873,
+    "passFailStatus": "pass",
+    "concurrencyNotes": "25 concurrent metadata scans matched",
+    "averageLatencyMs": 20.797436752136615
+  },
+  {
+    "moduleName": "purchase-procurement",
+    "testCategory": "observability",
+    "testScenario": "report generation",
+    "expectedResult": "all report files generated",
+    "actualResult": "reports-generated",
+    "responseTimeMs": 90.9943000000003,
+    "retryCount": 0,
+    "executionDurationMs": 90.9943000000003,
+    "passFailStatus": "pass",
+    "averageLatencyMs": 21.392325423728682
+  }
+]

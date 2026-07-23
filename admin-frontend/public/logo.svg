@@ -1,0 +1,30 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle">
+    <title id="logoTitle">Annakshetra - Natural Farm Products Logo</title>
+    <defs>
+        <style>
+            .c-green { fill: #4CAF50; }    /* Natural Green */
+            .c-gold { fill: #FFD54F; }     /* Harvest Gold */
+            .c-earth { fill: #A15031; }    /* Terracotta Hands */
+            .c-blue { fill: #2196F3; }     /* Water/Sky Blue for Bowl */
+            .c-food { fill: #FFECB3; }     /* Creamy Food */
+            .c-text { fill: #5D4037; }     /* Dark Brown Text */
+        </style>
+    </defs>
+
+    <circle class="c-gold" cx="200" cy="80" r="20"/>
+
+    <path class="c-green" d="M 50 300 C 80 150, 320 150, 350 300 L 340 310 C 310 180, 90 180, 60 310 Z"/>
+    
+    <rect class="c-gold" x="100" y="190" width="8" height="60" rx="3" transform="rotate(-10 104 220)"/>
+    
+    <rect class="c-gold" x="292" y="190" width="8" height="60" rx="3" transform="rotate(10 296 220)"/>
+
+    <path class="c-blue" d="M 120 280 A 80 25 0 0 1 280 280 L 280 320 A 80 25 0 0 1 120 320 Z"/>
+    
+    <ellipse class="c-food" cx="200" cy="280" rx="75" ry="15"/>
+    
+    <path class="c-earth" d="M 100 350 Q 150 280, 200 270 Q 250 280, 300 350 L 280 360 Q 200 300, 120 360 Z"/>
+
+    <text class="c-text" x="200" y="380" font-family="Arial, sans-serif" font-size="36" text-anchor="middle" font-weight="bold">ANNAKSHETRA</text>
+
+</svg>
